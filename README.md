@@ -1,4 +1,3 @@
-
 <div align="center">
 <a href="https://www.nonead.com">
 <img src="https://www.nonead.com/assets/img/vi/NONEAD_ai.png" width="300" alt="nonead logo">
@@ -50,6 +49,7 @@
     <a href='https://github.com/nonead/Nonead-Universal-Robots-MCP'>
       <img src="https://img.shields.io/github/stars/nonead/Nonead-Universal-Robots-MCP.svg?style=flat-square&label=Stars&logo=github" alt="Github Stars"/></img>
     </a>
+    <a href="https://smithery.ai/server/@nonead/nur_mcp_server"><img alt="Smithery Badge" src="https://smithery.ai/badge/@nonead/nur_mcp_server"></a>
 </p>
 
 
@@ -255,6 +255,15 @@ All operational risks and consequences are borne by the user.
 
 #### 5.1.2 Installation  
 
+### Installing via Smithery
+
+To install nUR MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@nonead/nur_mcp_server):
+
+```bash
+npx -y @smithery/cli install @nonead/nur_mcp_server --client claude
+```
+
+### Installing Manually
 **MCP Server Installation:**  
 1. Install Python 3.11 or later.  
 2. Install pip 25.1 or later.  
