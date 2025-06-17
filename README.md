@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/nonead-nonead-universal-robots-mcp-badge.png)](https://mseep.ai/app/nonead-nonead-universal-robots-mcp)
+
 
 <div align="center">
 <a href="https://www.nonead.com">
