@@ -133,39 +133,39 @@ nUR_MCP_SERVER هو نظام وسيط للتحكم الذكي في الروبو�
 
 | معرف الأداة | فئة الوظيفة | وصف الوظيفة | المعلمات الرئيسية |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | إدارة الاتصال | الاتصال بروبوت UR | ip:عنوان الروبوت |
-| fcr4pIqoIXyxh3ko9FOsWU | إدارة الاتصال | قطع اتصال روبوت UR | ip:عنوان الروبوت |
-| fNKAydKkxHwmGFgyrePBsN | مراقبة الحالة | الحصول على مدة التشغيل (ثانية) | ip:عنوان الروبوت |
-| fYTMsGvSRpUdWmURng7kGX | عمليات السجل | الحصول على إخراج سجل Int (0-23) | ip:عنوان الروبوت, index:فهرس السجل |
-| fvfqDMdDJer6kpbCzwFL1D | عمليات السجل | الحصول على إخراج سجل Double (0-23) | ip:عنوان الروبوت, index:فهرس السجل |
-| fCJ6sRw9m0ArdZ-MCaeNWK | عمليات السجل | الحصول على إخراج سجل Double (0-31) | ip:عنوان الروبوت, index:فهرس السجل |
-| f_ZXAIUv-eqHelwWxrzDHe | معلومات الجهاز | الحصول على الرقم التسلسلي | ip:عنوان الروبوت |
-| fZ2ALt5kD50gV9AdEgBrRO | معلومات الجهاز | الحصول على الموديل | ip:عنوان الروبوت |
-| fEtHcw5RNF54X9RYIEU-1m | تحريك الحركة | الحصول على إحداثيات TCP في الوقت الحقيقي | ip:عنوان الروبوت |
-| ftsb2AsiqiPqSBxHIwALOx | تحريك الحركة | الحصول على زوايا المفاصل في الوقت الحقيقي | ip:عنوان الروبوت |
-| fXmkr4PLkHKF0wgQGEHzLt | تحريك الحركة | إرسال أمر وضعية المفاصل | ip:عنوان الروبوت, q:زوايا المفاصل(راديان) |
-| fWdukQrgFZeK-DEcST4AwO | تحريك الحركة | إرسال أمر حركة خطية TCP | ip:عنوان الروبوت, pose:موضع TCP |
-| f2gbgju7QsymJa4wPgZQ0T | تحريك الحركة | حركة خطية محور X | ip:عنوان الروبوت, distance:مسافة الحركة(متر) |
-| fS6rCxVp498s5edU7jCMB3 | تحريك الحركة | حركة خطية محور Y | ip:عنوان الروبوت, distance:مسافة الحركة(متر) |
-| fJps7j-T3lwzXhp8p0_suy | تحريك الحركة | حركة خطية محور Z | ip:عنوان الروبوت, distance:مسافة الحركة(متر) |
-| fTMj5413O5CzsORAyBYXj8 | تحكم البرنامج | تحميل برنامج UR | ip:عنوان الروبوت, program_name:اسم البرنامج |
-| fqiYJ1c9fqCs5eYd-yKEeJ | تحكم البرنامج | تحميل وتنفيذ برنامج UR | ip:عنوان الروبوت, program_name:اسم البرنامج |
-| fW6-wrPoqm2bE3bMgtLbLP | تحكم البرنامج | إيقاف البرنامج الحالي | ip:عنوان الروبوت |
-| fsEmm-VX3CCY_XvnCDms7f | تحكم البرنامج | إيقاف البرنامج الحالي مؤقتًا | ip:عنوان الروبوت |
-| f83-fUQBd-YRSdIQDpuYmW | مراقبة الحالة | الحصول على الجهد الحالي | ip:عنوان الروبوت |
-| foMoD2L690vRdQxdW_gRNl | مراقبة الحالة | الحصول على التيار الحالي | ip:عنوان الروبوت |
-| fDZBXqofuIb-7IjS6t2YJ2 | مراقبة الحالة | الحصول على جهد المفاصل | ip:عنوان الروبوت |
-| fgAa_kwSmXmvld6Alx39ij | مراقبة الحالة | الحصول على تيار المفاصل | ip:عنوان الروبوت |
-| furAKHVnYvORJ9R7N7vpbl | مراقبة الحالة | الحصول على درجة حرارة المفاصل | ip:عنوان الروبوت |
-| fuNb7TgOgWNukjAVjusMN4 | مراقبة الحالة | الحصول على حالة التشغيل | ip:عنوان الروبوت |
-| fD12XJtqjgI46Oufwt928c | مراقبة الحالة | الحصول على حالة تنفيذ البرنامج | ip:عنوان الروبوت |
-| fMLa2mjlactTbD_CCKB1tX | معلومات الجهاز | الحصول على إصدار البرنامج | ip:عنوان الروبوت |
-| fWXQKGQ6J5mas9K9mGPK3x | معلومات الجهاز | الحصول على وضع الأمان | ip:عنوان الروبوت |
-| f81vKugz9xnncjirTC3B6A | تحكم البرنامج | الحصول على قائمة البرامج | ip:عنوان الروبوت, username/password:بيانات اعتماد SSH |
-| ffaaQZeknwwTISLYdYqM0_ | تحكم البرنامج | إرسال نص برنامج | ip:عنوان الروبوت, script:محتوى النص |
-| fsWlT3tCOn1ub-kUZCrq7E | تحريك الحركة | حركة دائرية | ip:عنوان الروبوت, center:موضع TCP المركز, r:نصف القطر(متر) |
-| f7y1QpjnA9s1bzfLeOkTnS | تحريك الحركة | رسم مربع | ip:عنوان الروبوت, origin:موضع TCP البداية, border:طول الضلع(متر) |
-| fuN_LLSc22VKXWXwbwNARo | تحريك الحركة | رسم مستطيل | ip:عنوان الروبوت, origin:موضع TCP البداية, width/height:العرض/الارتفاع(متر) |
+| fkUCFg7YmxSflgfmJawHeo (`connect_ur`) | إدارة الاتصال | الاتصال بروبوت UR | ip:عنوان الروبوت |
+| fcr4pIqoIXyxh3ko9FOsWU (`disconnect_ur`) | إدارة الاتصال | قطع اتصال روبوت UR | ip:عنوان الروبوت |
+| fNKAydKkxHwmGFgyrePBsN (`get_time`) | مراقبة الحالة | الحصول على مدة التشغيل (ثانية) | ip:عنوان الروبوت |
+| fYTMsGvSRpUdWmURng7kGX (`get_log_int`) | عمليات السجل | الحصول على إخراج سجل Int (0-23) | ip:عنوان الروبوت, index:فهرس السجل |
+| fvfqDMdDJer6kpbCzwFL1D (`get_log_double_0_23`) | عمليات السجل | الحصول على إخراج سجل Double (0-23) | ip:عنوان الروبوت, index:فهرس السجل |
+| fCJ6sRw9m0ArdZ-MCaeNWK (`get_log_double_0_31`) | عمليات السجل | الحصول على إخراج سجل Double (0-31) | ip:عنوان الروبوت, index:فهرس السجل |
+| f_ZXAIUv-eqHelwWxrzDHe (`get_serial_number`) | معلومات الجهاز | الحصول على الرقم التسلسلي | ip:عنوان الروبوت |
+| fZ2ALt5kD50gV9AdEgBrRO (`get_robot_model`) | معلومات الجهاز | الحصول على الموديل | ip:عنوان الروبوت |
+| fEtHcw5RNF54X9RYIEU-1m (`get_actual_tcp_pose`) | تحريك الحركة | الحصول على إحداثيات TCP في الوقت الحقيقي | ip:عنوان الروبوت |
+| ftsb2AsiqiPqSBxHIwALOx (`get_actual_joint_pose`) | تحريك الحركة | الحصول على زوايا المفاصل في الوقت الحقيقي | ip:عنوان الروبوت |
+| fXmkr4PLkHKF0wgQGEHzLt (`movej`) | تحريك الحركة | إرسال أمر وضعية المفاصل | ip:عنوان الروبوت, q:زوايا المفاصل(راديان) |
+| fWdukQrgFZeK-DEcST4AwO (`movel`) | تحريك الحركة | إرسال أمر حركة خطية TCP | ip:عنوان الروبوت, pose:موضع TCP |
+| f2gbgju7QsymJa4wPgZQ0T (`movel_x`) | تحريك الحركة | حركة خطية محور X | ip:عنوان الروبوت, distance:مسافة الحركة(متر) |
+| fS6rCxVp498s5edU7jCMB3 (`movel_y`) | تحريك الحركة | حركة خطية محور Y | ip:عنوان الروبوت, distance:مسافة الحركة(متر) |
+| fJps7j-T3lwzXhp8p0_suy (`movel_z`) | تحريك الحركة | حركة خطية محور Z | ip:عنوان الروبوت, distance:مسافة الحركة(متر) |
+| fTMj5413O5CzsORAyBYXj8 (`load_program`) | تحكم البرنامج | تحميل برنامج UR | ip:عنوان الروبوت, program_name:اسم البرنامج |
+| fqiYJ1c9fqCs5eYd-yKEeJ (`load_and_run_program`) | تحكم البرنامج | تحميل وتنفيذ برنامج UR | ip:عنوان الروبوت, program_name:اسم البرنامج |
+| fW6-wrPoqm2bE3bMgtLbLP (`stop_program`) | تحكم البرنامج | إيقاف البرنامج الحالي | ip:عنوان الروبوت |
+| fsEmm-VX3CCY_XvnCDms7f (`pause_program`) | تحكم البرنامج | إيقاف البرنامج الحالي مؤقتًا | ip:عنوان الروبوت |
+| f83-fUQBd-YRSdIQDpuYmW (`get_actual_robot_voltage`) | مراقبة الحالة | الحصول على الجهد الحالي | ip:عنوان الروبوت |
+| foMoD2L690vRdQxdW_gRNl (`get_actual_robot_current`) | مراقبة الحالة | الحصول على التيار الحالي | ip:عنوان الروبوت |
+| fDZBXqofuIb-7IjS6t2YJ2 (`get_actual_joint_voltage`) | مراقبة الحالة | الحصول على جهد المفاصل | ip:عنوان الروبوت |
+| fgAa_kwSmXmvld6Alx39ij (`get_actual_joint_current`) | مراقبة الحالة | الحصول على تيار المفاصل | ip:عنوان الروبوت |
+| furAKHVnYvORJ9R7N7vpbl (`get_joint_temperatures`) | مراقبة الحالة | الحصول على درجة حرارة المفاصل | ip:عنوان الروبوت |
+| fuNb7TgOgWNukjAVjusMN4 (`get_robot_mode`) | مراقبة الحالة | الحصول على حالة التشغيل | ip:عنوان الروبوت |
+| fD12XJtqjgI46Oufwt928c (`get_program_state`) | مراقبة الحالة | الحصول على حالة تنفيذ البرنامج | ip:عنوان الروبوت |
+| fMLa2mjlactTbD_CCKB1tX (`get_ur_software_version`) | معلومات الجهاز | الحصول على إصدار البرنامج | ip:عنوان الروبوت |
+| fWXQKGQ6J5mas9K9mGPK3x (`get_safety_mode`) | معلومات الجهاز | الحصول على وضع الأمان | ip:عنوان الروبوت |
+| f81vKugz9xnncjirTC3B6A (`get_programs`) | تحكم البرنامج | الحصول على قائمة البرامج | ip:عنوان الروبوت, username/password:بيانات اعتماد SSH |
+| ffaaQZeknwwTISLYdYqM0_ (`send_program_script`) | تحكم البرنامج | إرسال نص برنامج | ip:عنوان الروبوت, script:محتوى النص |
+| fsWlT3tCOn1ub-kUZCrq7E (`draw_circle`) | تحريك الحركة | حركة دائرية | ip:عنوان الروبوت, center:موضع TCP المركز, r:نصف القطر(متر) |
+| f7y1QpjnA9s1bzfLeOkTnS (`draw_square`) | تحريك الحركة | رسم مربع | ip:عنوان الروبوت, origin:موضع TCP البداية, border:طول الضلع(متر) |
+| fuN_LLSc22VKXWXwbwNARo (`draw_rectangle`) | تحريك الحركة | رسم مستطيل | ip:عنوان الروبوت, origin:موضع TCP البداية, width/height:العرض/الارتفاع(متر) |
 
 ملاحظة: جميع الأدوات تتطلب اتصالاً مسبقاً بالروبوت.
 

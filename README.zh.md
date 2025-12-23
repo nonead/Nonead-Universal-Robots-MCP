@@ -136,39 +136,39 @@ nUR_MCP_SERVER是基于MCP（Model Control Protocol）接口协议构建的智�
 
 | 工具ID | 功能分类 | 功能描述 | 关键参数 |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | 连接管理 | 连接UR机器人 | ip:机器人IP |
-| fcr4pIqoIXyxh3ko9FOsWU | 连接管理 | 断开UR机器人连接 | ip:机器人IP |
-| fNKAydKkxHwmGFgyrePBsN | 状态监控 | 获取开机时长(秒) | ip:机器人IP |
-| fYTMsGvSRpUdWmURng7kGX | 寄存器操作 | 获取Int寄存器输出(0-23) | ip:机器人IP, index:寄存器索引 |
-| fvfqDMdDJer6kpbCzwFL1D | 寄存器操作 | 获取Double寄存器输出(0-23) | ip:机器人IP, index:寄存器索引 |
-| fCJ6sRw9m0ArdZ-MCaeNWK | 寄存器操作 | 获取Double寄存器输出(0-31) | ip:机器人IP, index:寄存器索引 |
-| f_ZXAIUv-eqHelwWxrzDHe | 设备信息 | 获取序列号 | ip:机器人IP |
-| fZ2ALt5kD50gV9AdEgBrRO | 设备信息 | 获取型号 | ip:机器人IP |
-| fEtHcw5RNF54X9RYIEU-1m | 运动控制 | 获取实时TCP坐标 | ip:机器人IP |
-| ftsb2AsiqiPqSBxHIwALOx | 运动控制 | 获取实时关节角度 | ip:机器人IP |
-| fXmkr4PLkHKF0wgQGEHzLt | 运动控制 | 发送关节姿态指令 | ip:机器人IP, q:关节角度(弧度) |
-| fWdukQrgFZeK-DEcST4AwO | 运动控制 | 发送TCP直线移动指令 | ip:机器人IP, pose:TCP位置 |
-| f2gbgju7QsymJa4wPgZQ0T | 运动控制 | X轴直线移动 | ip:机器人IP, distance:移动距离(米) |
-| fS6rCxVp498s5edU7jCMB3 | 运动控制 | Y轴直线移动 | ip:机器人IP, distance:移动距离(米) |
-| fJps7j-T3lwzXhp8p0_suy | 运动控制 | Z轴直线移动 | ip:机器人IP, distance:移动距离(米) |
-| fTMj5413O5CzsORAyBYXj8 | 程序控制 | 加载UR程序 | ip:机器人IP, program_name:程序名称 |
-| fqiYJ1c9fqCs5eYd-yKEeJ | 程序控制 | 加载并执行UR程序 | ip:机器人IP, program_name:程序名称 |
-| fW6-wrPoqm2bE3bMgtLbLP | 程序控制 | 停止当前程序 | ip:机器人IP |
-| fsEmm-VX3CCY_XvnCDms7f | 程序控制 | 暂停当前程序 | ip:机器人IP |
-| f83-fUQBd-YRSdIQDpuYmW | 状态监控 | 获取当前电压 | ip:机器人IP |
-| foMoD2L690vRdQxdW_gRNl | 状态监控 | 获取当前电流 | ip:机器人IP |
-| fDZBXqofuIb-7IjS6t2YJ2 | 状态监控 | 获取关节电压 | ip:机器人IP |
-| fgAa_kwSmXmvld6Alx39ij | 状态监控 | 获取关节电流 | ip:机器人IP |
-| furAKHVnYvORJ9R7N7vpbl | 状态监控 | 获取关节温度 | ip:机器人IP |
-| fuNb7TgOgWNukjAVjusMN4 | 状态监控 | 获取运行状态 | ip:机器人IP |
-| fD12XJtqjgI46Oufwt928c | 状态监控 | 获取程序执行状态 | ip:机器人IP |
-| fMLa2mjlactTbD_CCKB1tX | 设备信息 | 获取软件版本 | ip:机器人IP |
-| fWXQKGQ6J5mas9K9mGPK3x | 设备信息 | 获取安全模式 | ip:机器人IP |
-| f81vKugz9xnncjirTC3B6A | 程序控制 | 获取程序列表 | ip:机器人IP, username/password:SSH凭证 |
-| ffaaQZeknwwTISLYdYqM0_ | 程序控制 | 发送程序脚本 | ip:机器人IP, script:脚本内容 |
-| fsWlT3tCOn1ub-kUZCrq7E | 运动控制 | 画圆运动 | ip:机器人IP, center:圆心TCP位置, r:半径(米) |
-| f7y1QpjnA9s1bzfLeOkTnS | 运动控制 | 画正方形 | ip:机器人IP, origin:起点TCP位置, border:边长(米) |
-| fuN_LLSc22VKXWXwbwNARo | 运动控制 | 画矩形 | ip:机器人IP, origin:起点TCP位置, width/height:长宽(米) |
+| fkUCFg7YmxSflgfmJawHeo (`connect_ur`) | 连接管理 | 连接UR机器人 | ip:机器人IP |
+| fcr4pIqoIXyxh3ko9FOsWU (`disconnect_ur`) | 连接管理 | 断开UR机器人连接 | ip:机器人IP |
+| fNKAydKkxHwmGFgyrePBsN (`get_time`) | 状态监控 | 获取开机时长(秒) | ip:机器人IP |
+| fYTMsGvSRpUdWmURng7kGX (`get_output_int_register`) | 寄存器操作 | 获取Int寄存器输出(0-23) | ip:机器人IP, index:寄存器索引 |
+| fvfqDMdDJer6kpbCzwFL1D (`get_output_double_register`) | 寄存器操作 | 获取Double寄存器输出(0-23) | ip:机器人IP, index:寄存器索引 |
+| fCJ6sRw9m0ArdZ-MCaeNWK (`get_output_bit_register`) | 寄存器操作 | 获取Double寄存器输出(0-31) | ip:机器人IP, index:寄存器索引 |
+| f_ZXAIUv-eqHelwWxrzDHe (`get_serial_number`) | 设备信息 | 获取序列号 | ip:机器人IP |
+| fZ2ALt5kD50gV9AdEgBrRO (`get_robot_model`) | 设备信息 | 获取型号 | ip:机器人IP |
+| fEtHcw5RNF54X9RYIEU-1m (`get_actual_tcp_pose`) | 运动控制 | 获取实时TCP坐标 | ip:机器人IP |
+| ftsb2AsiqiPqSBxHIwALOx (`get_actual_joint_pose`) | 运动控制 | 获取实时关节角度 | ip:机器人IP |
+| fXmkr4PLkHKF0wgQGEHzLt (`movej`) | 运动控制 | 发送关节姿态指令 | ip:机器人IP, q:关节角度(弧度) |
+| fWdukQrgFZeK-DEcST4AwO (`movel`) | 运动控制 | 发送TCP直线移动指令 | ip:机器人IP, pose:TCP位置 |
+| f2gbgju7QsymJa4wPgZQ0T (`movel_x`) | 运动控制 | X轴直线移动 | ip:机器人IP, distance:移动距离(米) |
+| fS6rCxVp498s5edU7jCMB3 (`movel_y`) | 运动控制 | Y轴直线移动 | ip:机器人IP, distance:移动距离(米) |
+| fJps7j-T3lwzXhp8p0_suy (`movel_z`) | 运动控制 | Z轴直线移动 | ip:机器人IP, distance:移动距离(米) |
+| fTMj5413O5CzsORAyBYXj8 (`load_program`) | 程序控制 | 加载UR程序 | ip:机器人IP, program_name:程序名称 |
+| fqiYJ1c9fqCs5eYd-yKEeJ (`load_and_run_program`) | 程序控制 | 加载并执行UR程序 | ip:机器人IP, program_name:程序名称 |
+| fW6-wrPoqm2bE3bMgtLbLP (`stop_program`) | 程序控制 | 停止当前程序 | ip:机器人IP |
+| fsEmm-VX3CCY_XvnCDms7f (`pause_program`) | 程序控制 | 暂停当前程序 | ip:机器人IP |
+| f83-fUQBd-YRSdIQDpuYmW (`get_actual_robot_voltage`) | 状态监控 | 获取当前电压 | ip:机器人IP |
+| foMoD2L690vRdQxdW_gRNl (`get_actual_robot_current`) | 状态监控 | 获取当前电流 | ip:机器人IP |
+| fDZBXqofuIb-7IjS6t2YJ2 (`get_actual_joint_voltage`) | 状态监控 | 获取关节电压 | ip:机器人IP |
+| fgAa_kwSmXmvld6Alx39ij (`get_actual_joint_current`) | 状态监控 | 获取关节电流 | ip:机器人IP |
+| furAKHVnYvORJ9R7N7vpbl (`get_joint_temperatures`) | 状态监控 | 获取关节温度 | ip:机器人IP |
+| fuNb7TgOgWNukjAVjusMN4 (`get_robot_mode`) | 状态监控 | 获取运行状态 | ip:机器人IP |
+| fD12XJtqjgI46Oufwt928c (`get_program_state`) | 状态监控 | 获取程序执行状态 | ip:机器人IP |
+| fMLa2mjlactTbD_CCKB1tX (`get_ur_software_version`) | 设备信息 | 获取软件版本 | ip:机器人IP |
+| fWXQKGQ6J5mas9K9mGPK3x (`get_safety_mode`) | 设备信息 | 获取安全模式 | ip:机器人IP |
+| f81vKugz9xnncjirTC3B6A (`get_programs`) | 程序控制 | 获取程序列表 | ip:机器人IP, username/password:SSH凭证 |
+| ffaaQZeknwwTISLYdYqM0_ (`send_program_script`) | 程序控制 | 发送程序脚本 | ip:机器人IP, script:脚本内容 |
+| fsWlT3tCOn1ub-kUZCrq7E (`draw_circle`) | 运动控制 | 画圆运动 | ip:机器人IP, center:圆心TCP位置, r:半径(米) |
+| f7y1QpjnA9s1bzfLeOkTnS (`draw_square`) | 运动控制 | 画正方形 | ip:机器人IP, origin:起点TCP位置, border:边长(米) |
+| fuN_LLSc22VKXWXwbwNARo (`draw_rectangle`) | 运动控制 | 画矩形 | ip:机器人IP, origin:起点TCP位置, width/height:长宽(米) |
 
 注：所有工具均需先建立机器人连接后才能使用。
 

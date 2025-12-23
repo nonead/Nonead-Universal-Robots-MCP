@@ -1,6 +1,6 @@
 [project]
 name = "nonead-universal-robots-mcp"
-version = "0.1.1"
+version = "0.1.4"
 description = "Nonead Universal Robots MCP"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"

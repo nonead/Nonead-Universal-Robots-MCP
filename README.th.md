@@ -133,39 +133,39 @@ nUR_MCP_SERVER เป็นระบบซอฟต์แวร์ตัวก�
 
 | รหัสเครื่องมือ | หมวดหมู่ฟังก์ชัน | คำอธิบายฟังก์ชัน | พารามิเตอร์หลัก |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | การจัดการการเชื่อมต่อ | เชื่อมต่อหุ่นยนต์ UR | ip:IP หุ่นยนต์ |
-| fcr4pIqoIXyxh3ko9FOsWU | การจัดการการเชื่อมต่อ | ตัดการเชื่อมต่อหุ่นยนต์ UR | ip:IP หุ่นยนต์ |
-| fNKAydKkxHwmGFgyrePBsN | การตรวจสอบสถานะ | รับเวลาการทำงาน (วินาที) | ip:IP หุ่นยนต์ |
-| fYTMsGvSRpUdWmURng7kGX | การทำงานกับรีจิสเตอร์ | รับค่าส่งออกรีจิสเตอร์ Int (0-23) | ip:IP หุ่นยนต์, index:ดัชนีรีจิสเตอร์ |
-| fvfqDMdDJer6kpbCzwFL1D | การทำงานกับรีจิสเตอร์ | รับค่าส่งออกรีจิสเตอร์ Double (0-23) | ip:IP หุ่นยนต์, index:ดัชนีรีจิสเตอร์ |
-| fCJ6sRw9m0ArdZ-MCaeNWK | การทำงานกับรีจิสเตอร์ | รับค่าส่งออกรีจิสเตอร์ Double (0-31) | ip:IP หุ่นยนต์, index:ดัชนีรีจิสเตอร์ |
-| f_ZXAIUv-eqHelwWxrzDHe | ข้อมูลอุปกรณ์ | รับหมายเลขซีเรียล | ip:IP หุ่นยนต์ |
-| fZ2ALt5kD50gV9AdEgBrRO | ข้อมูลอุปกรณ์ | รับรุ่น | ip:IP หุ่นยนต์ |
-| fEtHcw5RNF54X9RYIEU-1m | การควบคุมการเคลื่อนไหว | รับพิกัด TCP แบบเรียลไทม์ | ip:IP หุ่นยนต์ |
-| ftsb2AsiqiPqSBxHIwALOx | การควบคุมการเคลื่อนไหว | รับมุมข้อต่อแบบเรียลไทม์ | ip:IP หุ่นยนต์ |
-| fXmkr4PLkHKF0wgQGEHzLt | การควบคุมการเคลื่อนไหว | ส่งคำสั่งท่าทางข้อต่อ | ip:IP หุ่นยนต์, q:มุมข้อต่อ(เรเดียน) |
-| fWdukQrgFZeK-DEcST4AwO | การควบคุมการเคลื่อนไหว | ส่งคำสั่งเคลื่อนที่แบบเส้นตรง TCP | ip:IP หุ่นยนต์, pose:ตำแหน่ง TCP |
-| f2gbgju7QsymJa4wPgZQ0T | การควบคุมการเคลื่อนไหว | การเคลื่อนที่แบบเส้นตรงแกน X | ip:IP หุ่นยนต์, distance:ระยะทาง(เมตร) |
-| fS6rCxVp498s5edU7jCMB3 | การควบคุมการเคลื่อนไหว | การเคลื่อนที่แบบเส้นตรงแกน Y | ip:IP หุ่นยนต์, distance:ระยะทาง(เมตร) |
-| fJps7j-T3lwzXhp8p0_suy | การควบคุมการเคลื่อนไหว | การเคลื่อนที่แบบเส้นตรงแกน Z | ip:IP หุ่นยนต์, distance:ระยะทาง(เมตร) |
-| fTMj5413O5CzsORAyBYXj8 | การควบคุมโปรแกรม | โหลดโปรแกรม UR | ip:IP หุ่นยนต์, program_name:ชื่อโปรแกรม |
-| fqiYJ1c9fqCs5eYd-yKEeJ | การควบคุมโปรแกรม | โหลดและรันโปรแกรม UR | ip:IP หุ่นยนต์, program_name:ชื่อโปรแกรม |
-| fW6-wrPoqm2bE3bMgtLbLP | การควบคุมโปรแกรม | หยุดโปรแกรมปัจจุบัน | ip:IP หุ่นยนต์ |
-| fsEmm-VX3CCY_XvnCDms7f | การควบคุมโปรแกรม | หยุดโปรแกรมปัจจุบันชั่วคราว | ip:IP หุ่นยนต์ |
-| f83-fUQBd-YRSdIQDpuYmW | การตรวจสอบสถานะ | รับแรงดันไฟฟ้าปัจจุบัน | ip:IP หุ่นยนต์ |
-| foMoD2L690vRdQxdW_gRNl | การตรวจสอบสถานะ | รับกระแสไฟฟ้าปัจจุบัน | ip:IP หุ่นยนต์ |
-| fDZBXqofuIb-7IjS6t2YJ2 | การตรวจสอบสถานะ | รับแรงดันไฟฟ้าข้อต่อ | ip:IP หุ่นยนต์ |
-| fgAa_kwSmXmvld6Alx39ij | การตรวจสอบสถานะ | รับกระแสไฟฟ้าข้อต่อ | ip:IP หุ่นยนต์ |
-| furAKHVnYvORJ9R7N7vpbl | การตรวจสอบสถานะ | รับอุณหภูมิข้อต่อ | ip:IP หุ่นยนต์ |
-| fuNb7TgOgWNukjAVjusMN4 | การตรวจสอบสถานะ | รับสถานะการทำงาน | ip:IP หุ่นยนต์ |
-| fD12XJtqjgI46Oufwt928c | การตรวจสอบสถานะ | รับสถานะการทำงานโปรแกรม | ip:IP หุ่นยนต์ |
-| fMLa2mjlactTbD_CCKB1tX | ข้อมูลอุปกรณ์ | รับเวอร์ชันซอฟต์แวร์ | ip:IP หุ่นยนต์ |
-| fWXQKGQ6J5mas9K9mGPK3x | ข้อมูลอุปกรณ์ | รับโหมดความปลอดภัย | ip:IP หุ่นยนต์ |
-| f81vKugz9xnncjirTC3B6A | การควบคุมโปรแกรม | รับรายการโปรแกรม | ip:IP หุ่นยนต์, username/password:ข้อมูลรับรอง SSH |
-| ffaaQZeknwwTISLYdYqM0_ | การควบคุมโปรแกรม | ส่งสคริปต์โปรแกรม | ip:IP หุ่นยนต์, script:เนื้อหาสคริปต์ |
-| fsWlT3tCOn1ub-kUZCrq7E | การควบคุมการเคลื่อนไหว | การเคลื่อนที่แบบวงกลม | ip:IP หุ่นยนต์, center:ตำแหน่ง TCP ศูนย์กลาง, r:รัศมี(เมตร) |
-| f7y1QpjnA9s1bzfLeOkTnS | การควบคุมการเคลื่อนไหว | วาดสี่เหลี่ยมจัตุรัส | ip:IP หุ่นยนต์, origin:ตำแหน่ง TCP เริ่มต้น, border:ความยาวด้าน(เมตร) |
-| fuN_LLSc22VKXWXwbwNARo | การควบคุมการเคลื่อนไหว | วาดสี่เหลี่ยมผืนผ้า | ip:IP หุ่นยนต์, origin:ตำแหน่ง TCP เริ่มต้น, width/height:ความกว้าง/ความสูง(เมตร) |
+| fkUCFg7YmxSflgfmJawHeo (`connect_ur`) | การจัดการการเชื่อมต่อ | เชื่อมต่อหุ่นยนต์ UR | ip:IP หุ่นยนต์ |
+| fcr4pIqoIXyxh3ko9FOsWU (`disconnect_ur`) | การจัดการการเชื่อมต่อ | ตัดการเชื่อมต่อหุ่นยนต์ UR | ip:IP หุ่นยนต์ |
+| fNKAydKkxHwmGFgyrePBsN (`get_time`) | การตรวจสอบสถานะ | รับเวลาการทำงาน (วินาที) | ip:IP หุ่นยนต์ |
+| fYTMsGvSRpUdWmURng7kGX (`get_output_int_register`) | การทำงานกับรีจิสเตอร์ | รับค่าส่งออกรีจิสเตอร์ Int (0-23) | ip:IP หุ่นยนต์, index:ดัชนีรีจิสเตอร์ |
+| fvfqDMdDJer6kpbCzwFL1D (`get_output_double_register`) | การทำงานกับรีจิสเตอร์ | รับค่าส่งออกรีจิสเตอร์ Double (0-23) | ip:IP หุ่นยนต์, index:ดัชนีรีจิสเตอร์ |
+| fCJ6sRw9m0ArdZ-MCaeNWK (`get_output_bit_register`) | การทำงานกับรีจิสเตอร์ | รับค่าส่งออกรีจิสเตอร์ Double (0-31) | ip:IP หุ่นยนต์, index:ดัชนีรีจิสเตอร์ |
+| f_ZXAIUv-eqHelwWxrzDHe (`get_serial_number`) | ข้อมูลอุปกรณ์ | รับหมายเลขซีเรียล | ip:IP หุ่นยนต์ |
+| fZ2ALt5kD50gV9AdEgBrRO (`get_robot_model`) | ข้อมูลอุปกรณ์ | รับรุ่น | ip:IP หุ่นยนต์ |
+| fEtHcw5RNF54X9RYIEU-1m (`get_actual_tcp_pose`) | การควบคุมการเคลื่อนไหว | รับพิกัด TCP แบบเรียลไทม์ | ip:IP หุ่นยนต์ |
+| ftsb2AsiqiPqSBxHIwALOx (`get_actual_joint_pose`) | การควบคุมการเคลื่อนไหว | รับมุมข้อต่อแบบเรียลไทม์ | ip:IP หุ่นยนต์ |
+| fXmkr4PLkHKF0wgQGEHzLt (`movej`) | การควบคุมการเคลื่อนไหว | ส่งคำสั่งท่าทางข้อต่อ | ip:IP หุ่นยนต์, q:มุมข้อต่อ(เรเดียน) |
+| fWdukQrgFZeK-DEcST4AwO (`movel`) | การควบคุมการเคลื่อนไหว | ส่งคำสั่งเคลื่อนที่แบบเส้นตรง TCP | ip:IP หุ่นยนต์, pose:ตำแหน่ง TCP |
+| f2gbgju7QsymJa4wPgZQ0T (`movel_x`) | การควบคุมการเคลื่อนไหว | การเคลื่อนที่แบบเส้นตรงแกน X | ip:IP หุ่นยนต์, distance:ระยะทาง(เมตร) |
+| fS6rCxVp498s5edU7jCMB3 (`movel_y`) | การควบคุมการเคลื่อนไหว | การเคลื่อนที่แบบเส้นตรงแกน Y | ip:IP หุ่นยนต์, distance:ระยะทาง(เมตร) |
+| fJps7j-T3lwzXhp8p0_suy (`movel_z`) | การควบคุมการเคลื่อนไหว | การเคลื่อนที่แบบเส้นตรงแกน Z | ip:IP หุ่นยนต์, distance:ระยะทาง(เมตร) |
+| fTMj5413O5CzsORAyBYXj8 (`load_program`) | การควบคุมโปรแกรม | โหลดโปรแกรม UR | ip:IP หุ่นยนต์, program_name:ชื่อโปรแกรม |
+| fqiYJ1c9fqCs5eYd-yKEeJ (`load_and_run_program`) | การควบคุมโปรแกรม | โหลดและรันโปรแกรม UR | ip:IP หุ่นยนต์, program_name:ชื่อโปรแกรม |
+| fW6-wrPoqm2bE3bMgtLbLP (`stop_program`) | การควบคุมโปรแกรม | หยุดโปรแกรมปัจจุบัน | ip:IP หุ่นยนต์ |
+| fsEmm-VX3CCY_XvnCDms7f (`pause_program`) | การควบคุมโปรแกรม | หยุดโปรแกรมปัจจุบันชั่วคราว | ip:IP หุ่นยนต์ |
+| f83-fUQBd-YRSdIQDpuYmW (`get_actual_robot_voltage`) | การตรวจสอบสถานะ | รับแรงดันไฟฟ้าปัจจุบัน | ip:IP หุ่นยนต์ |
+| foMoD2L690vRdQxdW_gRNl (`get_actual_robot_current`) | การตรวจสอบสถานะ | รับกระแสไฟฟ้าปัจจุบัน | ip:IP หุ่นยนต์ |
+| fDZBXqofuIb-7IjS6t2YJ2 (`get_actual_joint_voltage`) | การตรวจสอบสถานะ | รับแรงดันไฟฟ้าข้อต่อ | ip:IP หุ่นยนต์ |
+| fgAa_kwSmXmvld6Alx39ij (`get_actual_joint_current`) | การตรวจสอบสถานะ | รับกระแสไฟฟ้าข้อต่อ | ip:IP หุ่นยนต์ |
+| furAKHVnYvORJ9R7N7vpbl (`get_joint_temperatures`) | การตรวจสอบสถานะ | รับอุณหภูมิข้อต่อ | ip:IP หุ่นยนต์ |
+| fuNb7TgOgWNukjAVjusMN4 (`get_robot_mode`) | การตรวจสอบสถานะ | รับสถานะการทำงาน | ip:IP หุ่นยนต์ |
+| fD12XJtqjgI46Oufwt928c (`get_program_state`) | การตรวจสอบสถานะ | รับสถานะการทำงานโปรแกรม | ip:IP หุ่นยนต์ |
+| fMLa2mjlactTbD_CCKB1tX (`get_ur_software_version`) | ข้อมูลอุปกรณ์ | รับเวอร์ชันซอฟต์แวร์ | ip:IP หุ่นยนต์ |
+| fWXQKGQ6J5mas9K9mGPK3x (`get_safety_mode`) | ข้อมูลอุปกรณ์ | รับโหมดความปลอดภัย | ip:IP หุ่นยนต์ |
+| f81vKugz9xnncjirTC3B6A (`get_programs`) | การควบคุมโปรแกรม | รับรายการโปรแกรม | ip:IP หุ่นยนต์, username/password:ข้อมูลรับรอง SSH |
+| ffaaQZeknwwTISLYdYqM0_ (`send_program_script`) | การควบคุมโปรแกรม | ส่งสคริปต์โปรแกรม | ip:IP หุ่นยนต์, script:เนื้อหาสคริปต์ |
+| fsWlT3tCOn1ub-kUZCrq7E (`draw_circle`) | การควบคุมการเคลื่อนไหว | การเคลื่อนที่แบบวงกลม | ip:IP หุ่นยนต์, center:ตำแหน่ง TCP ศูนย์กลาง, r:รัศมี(เมตร) |
+| f7y1QpjnA9s1bzfLeOkTnS (`draw_square`) | การควบคุมการเคลื่อนไหว | วาดสี่เหลี่ยมจัตุรัส | ip:IP หุ่นยนต์, origin:ตำแหน่ง TCP เริ่มต้น, border:ความยาวด้าน(เมตร) |
+| fuN_LLSc22VKXWXwbwNARo (`draw_rectangle`) | การควบคุมการเคลื่อนไหว | วาดสี่เหลี่ยมผืนผ้า | ip:IP หุ่นยนต์, origin:ตำแหน่ง TCP เริ่มต้น, width/height:ความกว้าง/ความสูง(เมตร) |
 
 หมายเหตุ: เครื่องมือทั้งหมดต้องเชื่อมต่อกับหุ่นยนต์ก่อนจึงจะใช้งานได้
 
