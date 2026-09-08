@@ -133,39 +133,39 @@ LLM 기반 코드 생성 프레임워크로 자연어 명령을 URScript 로봇 
 
 | 도구ID | 기능 분류 | 기능 설명 | 주요 매개변수 |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | 연결 관리 | UR 로봇 연결 | ip:로봇 IP |
-| fcr4pIqoIXyxh3ko9FOsWU | 연결 관리 | UR 로봇 연결 해제 | ip:로봇 IP |
-| fNKAydKkxHwmGFgyrePBsN | 상태 모니터링 | 가동 시간 확인(초) | ip:로봇 IP |
-| fYTMsGvSRpUdWmURng7kGX | 레지스터 작업 | Int 레지스터 출력 가져오기(0-23) | ip:로봇 IP, index:레지스터 인덱스 |
-| fvfqDMdDJer6kpbCzwFL1D | 레지스터 작업 | Double 레지스터 출력 가져오기(0-23) | ip:로봇 IP, index:레지스터 인덱스 |
-| fCJ6sRw9m0ArdZ-MCaeNWK | 레지스터 작업 | Double 레지스터 출력 가져오기(0-31) | ip:로봇 IP, index:레지스터 인덱스 |
-| f_ZXAIUv-eqHelwWxrzDHe | 장치 정보 | 시리얼 번호 가져오기 | ip:로봇 IP |
-| fZ2ALt5kD50gV9AdEgBrRO | 장치 정보 | 모델 확인 | ip:로봇 IP |
-| fEtHcw5RNF54X9RYIEU-1m | 운동 제어 | 실시간 TCP 좌표 가져오기 | ip:로봇 IP |
-| ftsb2AsiqiPqSBxHIwALOx | 운동 제어 | 실시간 관절 각도 가져오기 | ip:로봇 IP |
-| fXmkr4PLkHKF0wgQGEHzLt | 운동 제어 | 관절 자세 명령 전송 | ip:로봇 IP, q:관절 각도(라디안) |
-| fWdukQrgFZeK-DEcST4AwO | 운동 제어 | TCP 직선 이동 명령 전송 | ip:로봇 IP, pose:TCP 위치 |
-| f2gbgju7QsymJa4wPgZQ0T | 운동 제어 | X축 직선 이동 | ip:로봇 IP, distance:이동 거리(미터) |
-| fS6rCxVp498s5edU7jCMB3 | 운동 제어 | Y축 직선 이동 | ip:로봇 IP, distance:이동 거리(미터) |
-| fJps7j-T3lwzXhp8p0_suy | 운동 제어 | Z축 직선 이동 | ip:로봇 IP, distance:이동 거리(미터) |
-| fTMj5413O5CzsORAyBYXj8 | 프로그램 제어 | UR 프로그램 로드 | ip:로봇 IP, program_name:프로그램 이름 |
-| fqiYJ1c9fqCs5eYd-yKEeJ | 프로그램 제어 | UR 프로그램 로드 및 실행 | ip:로봇 IP, program_name:프로그램 이름 |
-| fW6-wrPoqm2bE3bMgtLbLP | 프로그램 제어 | 현재 프로그램 정지 | ip:로봇 IP |
-| fsEmm-VX3CCY_XvnCDms7f | 프로그램 제어 | 현재 프로그램 일시 정지 | ip:로봇 IP |
-| f83-fUQBd-YRSdIQDpuYmW | 상태 모니터링 | 현재 전압 확인 | ip:로봇 IP |
-| foMoD2L690vRdQxdW_gRNl | 상태 모니터링 | 현재 전류 확인 | ip:로봇 IP |
-| fDZBXqofuIb-7IjS6t2YJ2 | 상태 모니터링 | 관절 전압 확인 | ip:로봇 IP |
-| fgAa_kwSmXmvld6Alx39ij | 상태 모니터링 | 관절 전류 확인 | ip:로봇 IP |
-| furAKHVnYvORJ9R7N7vpbl | 상태 모니터링 | 관절 온도 확인 | ip:로봇 IP |
-| fuNb7TgOgWNukjAVjusMN4 | 상태 모니터링 | 작동 상태 확인 | ip:로봇 IP |
-| fD12XJtqjgI46Oufwt928c | 상태 모니터링 | 프로그램 실행 상태 확인 | ip:로봇 IP |
-| fMLa2mjlactTbD_CCKB1tX | 장치 정보 | 소프트웨어 버전 확인 | ip:로봇 IP |
-| fWXQKGQ6J5mas9K9mGPK3x | 장치 정보 | 안전 모드 확인 | ip:로봇 IP |
-| f81vKugz9xnncjirTC3B6A | 프로그램 제어 | 프로그램 목록 가져오기 | ip:로봇 IP, username/password:SSH 인증 정보 |
-| ffaaQZeknwwTISLYdYqM0_ | 프로그램 제어 | 프로그램 스크립트 전송 | ip:로봇 IP, script:스크립트 내용 |
-| fsWlT3tCOn1ub-kUZCrq7E | 운동 제어 | 원 운동 | ip:로봇 IP, center:중심점 TCP 위치, r:반경(미터) |
-| f7y1QpjnA9s1bzfLeOkTnS | 운동 제어 | 정사각형 그리기 | ip:로봇 IP, origin:시작점 TCP 위치, border:변 길이(미터) |
-| fuN_LLSc22VKXWXwbwNARo | 운동 제어 | 직사각형 그리기 | ip:로봇 IP, origin:시작점 TCP 위치, width/height:가로/세로(미터) |
+| fkUCFg7YmxSflgfmJawHeo (`connect_ur`) | 연결 관리 | UR 로봇 연결 | ip:로봇 IP |
+| fcr4pIqoIXyxh3ko9FOsWU (`disconnect_ur`) | 연결 관리 | UR 로봇 연결 해제 | ip:로봇 IP |
+| fNKAydKkxHwmGFgyrePBsN (`get_time`) | 상태 모니터링 | 가동 시간 확인(초) | ip:로봇 IP |
+| fYTMsGvSRpUdWmURng7kGX (`get_output_int_register`) | 레지스터 작업 | Int 레지스터 출력 가져오기(0-23) | ip:로봇 IP, index:레지스터 인덱스 |
+| fvfqDMdDJer6kpbCzwFL1D (`get_output_double_register`) | 레지스터 작업 | Double 레지스터 출력 가져오기(0-23) | ip:로봇 IP, index:레지스터 인덱스 |
+| fCJ6sRw9m0ArdZ-MCaeNWK (`get_output_bit_register`) | 레지스터 작업 | Double 레지스터 출력 가져오기(0-31) | ip:로봇 IP, index:레지스터 인덱스 |
+| f_ZXAIUv-eqHelwWxrzDHe (`get_serial_number`) | 장치 정보 | 시리얼 번호 가져오기 | ip:로봇 IP |
+| fZ2ALt5kD50gV9AdEgBrRO (`get_robot_model`) | 장치 정보 | 모델 확인 | ip:로봇 IP |
+| fEtHcw5RNF54X9RYIEU-1m (`get_actual_tcp_pose`) | 운동 제어 | 실시간 TCP 좌표 가져오기 | ip:로봇 IP |
+| ftsb2AsiqiPqSBxHIwALOx (`get_actual_joint_pose`) | 운동 제어 | 실시간 관절 각도 가져오기 | ip:로봇 IP |
+| fXmkr4PLkHKF0wgQGEHzLt (`movej`) | 운동 제어 | 관절 자세 명령 전송 | ip:로봇 IP, q:관절 각도(라디안) |
+| fWdukQrgFZeK-DEcST4AwO (`movel`) | 운동 제어 | TCP 직선 이동 명령 전송 | ip:로봇 IP, pose:TCP 위치 |
+| f2gbgju7QsymJa4wPgZQ0T (`movel_x`) | 운동 제어 | X축 직선 이동 | ip:로봇 IP, distance:이동 거리(미터) |
+| fS6rCxVp498s5edU7jCMB3 (`movel_y`) | 운동 제어 | Y축 직선 이동 | ip:로봇 IP, distance:이동 거리(미터) |
+| fJps7j-T3lwzXhp8p0_suy (`movel_z`) | 운동 제어 | Z축 직선 이동 | ip:로봇 IP, distance:이동 거리(미터) |
+| fTMj5413O5CzsORAyBYXj8 (`load_program`) | 프로그램 제어 | UR 프로그램 로드 | ip:로봇 IP, program_name:프로그램 이름 |
+| fqiYJ1c9fqCs5eYd-yKEeJ (`load_and_run_program`) | 프로그램 제어 | UR 프로그램 로드 및 실행 | ip:로봇 IP, program_name:프로그램 이름 |
+| fW6-wrPoqm2bE3bMgtLbLP (`stop_program`) | 프로그램 제어 | 현재 프로그램 정지 | ip:로봇 IP |
+| fsEmm-VX3CCY_XvnCDms7f (`pause_program`) | 프로그램 제어 | 현재 프로그램 일시 정지 | ip:로봇 IP |
+| f83-fUQBd-YRSdIQDpuYmW (`get_actual_robot_voltage`) | 상태 모니터링 | 현재 전압 확인 | ip:로봇 IP |
+| foMoD2L690vRdQxdW_gRNl (`get_actual_robot_current`) | 상태 모니터링 | 현재 전류 확인 | ip:로봇 IP |
+| fDZBXqofuIb-7IjS6t2YJ2 (`get_actual_joint_voltage`) | 상태 모니터링 | 관절 전압 확인 | ip:로봇 IP |
+| fgAa_kwSmXmvld6Alx39ij (`get_actual_joint_current`) | 상태 모니터링 | 관절 전류 확인 | ip:로봇 IP |
+| furAKHVnYvORJ9R7N7vpbl (`get_joint_temperatures`) | 상태 모니터링 | 관절 온도 확인 | ip:로봇 IP |
+| fuNb7TgOgWNukjAVjusMN4 (`get_robot_mode`) | 상태 모니터링 | 작동 상태 확인 | ip:로봇 IP |
+| fD12XJtqjgI46Oufwt928c (`get_program_state`) | 상태 모니터링 | 프로그램 실행 상태 확인 | ip:로봇 IP |
+| fMLa2mjlactTbD_CCKB1tX (`get_ur_software_version`) | 장치 정보 | 소프트웨어 버전 확인 | ip:로봇 IP |
+| fWXQKGQ6J5mas9K9mGPK3x (`get_safety_mode`) | 장치 정보 | 안전 모드 확인 | ip:로봇 IP |
+| f81vKugz9xnncjirTC3B6A (`get_programs`) | 프로그램 제어 | 프로그램 목록 가져오기 | ip:로봇 IP, username/password:SSH 인증 정보 |
+| ffaaQZeknwwTISLYdYqM0_ (`send_program_script`) | 프로그램 제어 | 프로그램 스크립트 전송 | ip:로봇 IP, script:스크립트 내용 |
+| fsWlT3tCOn1ub-kUZCrq7E (`draw_circle`) | 운동 제어 | 원 운동 | ip:로봇 IP, center:중심점 TCP 위치, r:반경(미터) |
+| f7y1QpjnA9s1bzfLeOkTnS (`draw_square`) | 운동 제어 | 정사각형 그리기 | ip:로봇 IP, origin:시작점 TCP 위치, border:변 길이(미터) |
+| fuN_LLSc22VKXWXwbwNARo (`draw_rectangle`) | 운동 제어 | 직사각형 그리기 | ip:로봇 IP, origin:시작점 TCP 위치, width/height:가로/세로(미터) |
 
 참고: 모든 도구는 로봇 연결이 먼저 수립된 후 사용 가능합니다.
 

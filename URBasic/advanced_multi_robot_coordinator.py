@@ -693,6 +693,87 @@ class AdvancedMultiRobotCoordinator(MultiRobotCoordinator):
         self.monitoring_thread = None
         self._stop_monitoring = threading.Event()
     
+    def register_robot(self, robot_id: str, role: RobotRole = RobotRole.WORKER,
+                       robot_ip: Optional[str] = None) -> bool:
+        """
+        注册机器人到协调器
+
+        Args:
+            robot_id: 机器人ID（名称）
+            role: 机器人角色
+            robot_ip: 机器人IP地址（可选，缺省时与 robot_id 相同）
+
+        Returns:
+            bool: 注册是否成功
+        """
+        try:
+            with self._lock:
+                if robot_id in self.robots:
+                    logger.warning(f"机器人 {robot_id} 已注册")
+                    return True
+                return self.add_robot(robot_name=robot_id, robot_ip=robot_ip or robot_id, role=role)
+        except Exception as e:
+            logger.error(f"注册机器人 {robot_id} 失败: {str(e)}")
+            return False
+
+    def create_collaboration_task(self, task_name: str,
+                                  robot_assignments: Optional[Dict] = None,
+                                  dependencies: Optional[List[str]] = None) -> str:
+        """
+        创建协同任务
+
+        Args:
+            task_name: 任务名称
+            robot_assignments: 机器人任务分配，格式 {"robot_id": {"operation": ..., "params": {...}}}
+            dependencies: 依赖任务ID列表
+
+        Returns:
+            str: 任务ID
+        """
+        try:
+            task_id = f"task_{time.time_ns()}"
+            task = AdvancedCollaborationTask(
+                task_id=task_id,
+                task_name=task_name,
+                dependencies=dependencies or []
+            )
+            # 记录机器人任务分配信息
+            task.robot_assignments = robot_assignments or {}
+            if robot_assignments:
+                for robot_id, _assignment in robot_assignments.items():
+                    if robot_id in self.robots and robot_id not in task.assigned_robots:
+                        task.assigned_robots.append(robot_id)
+            self.add_advanced_task(task)
+            logger.info(f"已创建协同任务: {task_name} (ID: {task_id})")
+            return task_id
+        except Exception as e:
+            logger.error(f"创建协同任务失败: {str(e)}")
+            raise
+
+    def execute_task(self, task_id: str) -> Dict:
+        """
+        执行指定的协同任务
+
+        Args:
+            task_id: 任务ID
+
+        Returns:
+            Dict: 执行结果
+        """
+        if task_id not in self.tasks:
+            return {'success': False, 'error': f'任务 {task_id} 不存在'}
+        try:
+            allocation = self.allocate_advanced_tasks()
+            results = self.execute_allocated_tasks(allocation)
+            return {
+                'success': True,
+                'allocation': {k: [t.task_id for t in v] for k, v in allocation.items()},
+                'results': results
+            }
+        except Exception as e:
+            logger.error(f"执行协同任务 {task_id} 失败: {str(e)}")
+            return {'success': False, 'error': str(e)}
+
     def register_robot_skills(self, robot_name: str, skills: Dict[str, float]) -> bool:
         """
         注册机器人技能
@@ -1004,8 +1085,7 @@ class AdvancedMultiRobotCoordinator(MultiRobotCoordinator):
         
         return None
     
-    def execute_allocated_tasks(self, allocation: Dict[str, List[AdvancedCollaborationTask]]) -> 
-                               Dict[str, Dict[str, bool]]:
+    def execute_allocated_tasks(self, allocation: Dict[str, List[AdvancedCollaborationTask]]) -> Dict[str, Dict[str, bool]]:
         """
         执行分配的任务
         

@@ -9,9 +9,8 @@ import paramiko
 import URBasic
 from URBasic.advanced_multi_robot_coordinator import AdvancedMultiRobotCoordinator, CollaborationMode
 from URBasic.advanced_trajectory_planner import AdvancedTrajectoryPlanner
-from URBasic.advanced_data_recorder import AdvancedDataRecorder, RecordType
-from URBasic.advanced_data_analyzer import get_data_analyzer, AnalysisType, VisualizationType
-import numpy as np
+from URBasic.advanced_data_recorder import AdvancedDataRecorder, DataRecordType
+from URBasic.advanced_data_analyzer import get_data_analyzer, AnalysisType
 
 # Configure logging
 log_dir = Path("logs")
@@ -44,28 +43,30 @@ advanced_data_recorder = None
 advanced_data_analyzer = None
 
 # 初始化扩展模块
+
+
 def initialize_extended_modules():
     """初始化所有扩展模块"""
     global multi_robot_coordinator, advanced_trajectory_planner
     global advanced_data_recorder, advanced_data_analyzer
-    
+
     try:
         # 初始化多机器人协调器
         multi_robot_coordinator = AdvancedMultiRobotCoordinator()
         logger.info("高级多机器人协调器初始化成功")
-        
+
         # 初始化高级轨迹规划器
         advanced_trajectory_planner = AdvancedTrajectoryPlanner()
         logger.info("高级轨迹规划器初始化成功")
-        
+
         # 初始化高级数据记录器
         advanced_data_recorder = AdvancedDataRecorder()
         logger.info("高级数据记录器初始化成功")
-        
+
         # 获取数据分析器实例（单例）
         advanced_data_analyzer = get_data_analyzer()
         logger.info("高级数据分析器初始化成功")
-        
+
         return True
     except Exception as e:
         logger.error(f"初始化扩展模块失败: {str(e)}")
@@ -203,13 +204,8 @@ def connect_ur(ip: str):
         if robot_list.get(ip, "unknown") == "unknown" or not robot_list[
             ip].robotConnector.RTDE.isRunning():
             return return_msg(f"优傲机器人连接失败: {ip}")
-        robot_list[ip].robotConnector.DashboardClient.ur_is_remote_control()
-        remote = robot_list[ip].robotConnector.DashboardClient.last_respond.lower()
-        print(f"remote:{remote}")
-        if remote != 'true' and not remote.startswith('could not understand'):
-            disconnect_ur(ip)
-            return return_msg(f"请检查机器人是否处于远程控制模式。IP:{host}")
 
+        logger.info(f"连接成功。IP:{host}")
         return return_msg(f"连接成功。IP:{host}")
     except Exception as e:
         logger.error(f"优傲机器人连接失败: {str(e)}")
@@ -224,6 +220,7 @@ def disconnect_ur(ip: str):
         if robot_list.get(ip, "unknown") == "unknown":
             return return_msg("连接不存在")
         robot_list[ip].close()
+        logger.info(f"连接已断开。IP:{ip}")
         return return_msg("连接已断开。")
     except Exception as e:
         logger.error(f"连接断开失败: {str(e)}")
@@ -238,6 +235,7 @@ def get_serial_number(ip: str):
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
         robot_list[ip].robotConnector.DashboardClient.ur_serial_number()
+        logger.info(f"IP为{ip}的优傲机器人的序列号为： {robot_list[ip].robotConnector.DashboardClient.last_respond}")
         return return_msg(
             f"IP为{ip}的优傲机器人的序列号为： {robot_list[ip].robotConnector.DashboardClient.last_respond}")
     except Exception as e:
@@ -252,7 +250,7 @@ def get_time(ip: str) -> str:
     try:
         if '连接成功' not in link_check(ip):
             return return_msg(f"与机器人的连接已断开。IP:{ip}")
-
+        logger.info(f"{robotModle_list[ip].RobotTimestamp():.2f}")
         return return_msg(f"{robotModle_list[ip].RobotTimestamp():.2f}")
     except Exception as e:
         logger.error(f"获取开机时长失败: {str(e)}")
@@ -268,6 +266,7 @@ def get_ur_software_version(ip: str):
             return return_msg(f"与机器人的连接已断开。")
         robot_list[ip].robotConnector.DashboardClient.ur_polyscopeVersion()
         result = robot_list[ip].robotConnector.DashboardClient.last_respond
+        logger.info(f"IP为{ip}的优傲机器人的软件版本是{result}")
         return return_msg(f"IP为{ip}的优傲机器人的软件版本是{result}")
     except Exception as e:
         logger.error(f"软件版本获取失败: {str(e)}")
@@ -285,6 +284,7 @@ def get_robot_model(ip: str):
         e = robot_list[ip].robotConnector.DashboardClient.last_respond.lower()
         if e == 'true' or e == 'false':
             model = f"{model}e"
+        logger.info(f"{model}e")
         return return_msg(model)
     except Exception as e:
         logger.error(f"获取机器人型号失败: {str(e)}")
@@ -300,6 +300,7 @@ def get_safety_mode(ip: str):
             return return_msg(f"与机器人的连接已断开。")
         robot_list[ip].robotConnector.DashboardClient.ur_safetymode()
         result = robot_list[ip].robotConnector.DashboardClient.last_respond
+        logger.info(f"IP为{ip}的优傲机器人的安全模式是{result}")
         return return_msg(f"IP为{ip}的优傲机器人的安全模式是{result}")
     except Exception as e:
         logger.error(f"安全模式获取失败: {str(e)}")
@@ -314,6 +315,7 @@ def get_robot_mode(ip: str):
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
         robot_list[ip].robotConnector.DashboardClient.ur_robotmode()
+        logger.info(f"IP为{ip}的优傲机器人的运行状态为： {robot_list[ip].robotConnector.DashboardClient.last_respond}")
         return return_msg(
             f"IP为{ip}的优傲机器人的运行状态为： {robot_list[ip].robotConnector.DashboardClient.last_respond}")
     except Exception as e:
@@ -344,6 +346,8 @@ def get_program_state(ip: str):
             prog_saved = '程序未保存，请及时保存或备份正在编辑的程序。'
         if running == 'Program running: true':
             prog_running = '机械臂正在动作。'
+        logger.info(
+            f"IP为{ip}的优傲机器人当前加载的程序是：{prog_name}，程序的执行状态是：{prog_state}。{prog_saved}。{prog_running}")
         return return_msg(
             f"IP为{ip}的优傲机器人当前加载的程序是：{prog_name}，程序的执行状态是：{prog_state}。{prog_saved}。{prog_running}")
     except Exception as e:
@@ -358,7 +362,7 @@ def get_actual_tcp_pose(ip: str):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
-
+        logger.info(f"当前TCP位置： {robot_list[ip].get_actual_tcp_pose()}")
         return return_msg(f"当前TCP位置： {robot_list[ip].get_actual_tcp_pose()}")
     except Exception as e:
         logger.error(f"TCP位置获取失败: {str(e)}")
@@ -372,6 +376,7 @@ def get_actual_joint_pose(ip: str):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
+        logger.info(f"当前关节姿态 {robot_list[ip].get_actual_joint_positions()}")
         return return_msg(f"当前关节姿态 {robot_list[ip].get_actual_joint_positions()}")
     except Exception as e:
         logger.error(f"TCP位置获取失败: {str(e)}")
@@ -386,7 +391,8 @@ def get_output_int_register(ip: str, index: int):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
-        return return_msg(f"{robotModle_list[ip].OutputIntRegister(index)}")
+        logger.info(f"{robotModle_list[ip].OutputIntRegister(index)}")
+        return return_msg(f"Int寄存器{index}={robotModle_list[ip].OutputIntRegister(index)}")
     except Exception as e:
         logger.error(f"Int寄存器的值获取失败: {str(e)}")
         return return_msg(f"Int寄存器的值获取失败: {str(e)}")
@@ -400,6 +406,7 @@ def get_output_double_register(ip: str, index: int):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
+        logger.info(f"Double寄存器{index}={robotModle_list[ip].OutputDoubleRegister(index)}")
         return return_msg(f"{robotModle_list[ip].OutputDoubleRegister(index)}")
     except Exception as e:
         logger.error(f"Double寄存器的值获取失败: {str(e)}")
@@ -415,6 +422,7 @@ def get_output_bit_register(ip: str, index: int):
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
         bits = robotModle_list[ip].OutputBitRegister()
+        logger.info(f"Bool寄存器{index}={bits[index]}")
         return return_msg(f"{bits[index]}")
     except Exception as e:
         logger.error(f"Bool寄存器的值获取失败: {str(e)}")
@@ -428,6 +436,7 @@ def get_actual_robot_voltage(ip: str):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
+        logger.info(f"{robotModle_list[ip].ActualRobotVoltage()}（伏特）")
         return return_msg(f"{robotModle_list[ip].ActualRobotVoltage()}（伏特）")
     except Exception as e:
         logger.error(f"机器人的电压获取失败: {str(e)}")
@@ -441,6 +450,7 @@ def get_actual_robot_current(ip: str):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
+        logger.info(f"{robotModle_list[ip].ActualRobotCurrent()}（安培）")
         return return_msg(f"{robotModle_list[ip].ActualRobotCurrent()}（安培）")
     except Exception as e:
         logger.error(f"机器人的电流获取失败: {str(e)}")
@@ -454,6 +464,7 @@ def get_actual_joint_voltage(ip: str):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
+        logger.info(f"{robotModle_list[ip].ActualJointVoltage()}（伏特）")
         return return_msg(f"{robotModle_list[ip].ActualJointVoltage()}（伏特）")
     except Exception as e:
         logger.error(f"机器人的关节电压获取失败: {str(e)}")
@@ -467,7 +478,8 @@ def get_actual_joint_current(ip: str):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
-        return return_msg(f"{robotModle_list[ip].ActualJointVoltage()}（安培）")
+        logger.info(f"{robotModle_list[ip].ActualJointCurrent()}（安培）")
+        return return_msg(f"{robotModle_list[ip].ActualJointCurrent()}（安培）")
     except Exception as e:
         logger.error(f"机器人各关节的电流获取失败: {str(e)}")
         return return_msg(f"机器人各关节的电流获取失败: {str(e)}")
@@ -480,6 +492,7 @@ def get_joint_temperatures(ip: str):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
+        logger.info(f"{robotModle_list[ip].JointTemperatures()}（摄氏度）")
         return return_msg(f"{robotModle_list[ip].JointTemperatures()}（摄氏度）")
     except Exception as e:
         logger.error(f"机器人各关节的温度获取失败: {str(e)}")
@@ -512,6 +525,7 @@ def get_programs(ip: str, username='root', password='easybot'):
             name = file.replace(' ', '').replace('\r', '')
             if name.endswith('.urp'):
                 files.append(name)
+        logger.info(f"{str(files)}")
         return return_msg(f"命令已发送：{str(files)}")
     except Exception as e:
         return return_msg(f"程序列表获取失败。{str(e)}")
@@ -526,6 +540,8 @@ def send_program_script(ip: str, script: str):
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
         robot_list[ip].robotConnector.RealTimeClient.SendProgram(script)
+        time.sleep(1)
+        logger.info(f"发送脚本:{script}")
         return return_msg(f"脚本程序已发送，请确认执行结果。")
     except Exception as e:
         logger.error(f"发送脚本失败: {str(e)}")
@@ -533,21 +549,24 @@ def send_program_script(ip: str, script: str):
 
 
 @mcp.tool()
-def movej(ip: str, q: dict, a=1, v=1, t=0, r=0):
+def movej(ip: str, q: list, a=1, v=1, t=0, r=0):
     """发送新的关节姿态到指定IP的机器人，使每个关节都旋转至指定弧度。
-    IP：机器人地址
-    q：各关节角度
-    a：加速度（米每平方秒）
-    v：速度（米每秒）
-    t：移动时长（秒）
-    r：交融半径（米）"""
+    IP：机器人地址，
+    q：各关节角度，
+    a：加速度（米每平方秒），
+    v：速度（米每秒），
+    t：移动时长（秒），
+    r：交融半径（米）。"""
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
 
         cmd = f"movej({q},{a},{v},{t},{r})"
+        logger.info(f"发送脚本:{cmd}")
         robot_list[ip].movej(q, a, v, t, r)
+        time.sleep(1)
         result = movejConfirm(ip, q)
+
         if result == 1:
             return return_msg(f"命令 {cmd} 已发送，移动完成。")
         else:
@@ -558,7 +577,7 @@ def movej(ip: str, q: dict, a=1, v=1, t=0, r=0):
 
 
 @mcp.tool()
-def movel(ip: str, pose: dict, a=1, v=1, t=0, r=0):
+def movel(ip: str, pose: list, a=1, v=1, t=0, r=0):
     """发送新的TCP位置到指定IP的机器人，使TCP移动到指定位置，移动期间TCP作直线移动。
     IP：机器人地址
     pose：TCP位置
@@ -569,10 +588,12 @@ def movel(ip: str, pose: dict, a=1, v=1, t=0, r=0):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
-
-        robot_list[ip].movel(pose, a, v, t, r)
-        result = movelConfirm(ip, pose)
         cmd = f"movel(p{pose},{a},{v},{t},{r})"
+        logger.info(f"发送脚本:{cmd}")
+        robot_list[ip].movel(pose, a, v, t, r)
+        time.sleep(1)
+        result = movelConfirm(ip, pose)
+
         if result == 1:
             return return_msg(f"命令 {cmd} 已发送，移动完成。")
         else:
@@ -593,8 +614,12 @@ def movel_x(ip: str, distance: float):
         pose = robot_list[ip].get_actual_tcp_pose()
         pose[0] = pose[0] + distance
         robot_list[ip].movel(pose)
+        time.sleep(1)
         result = movelConfirm(ip, pose)
-        cmd = f"movel(p[{'{:.4f}'.format(pose[0])},{'{:.4f}'.format(pose[1])},{'{:.4f}'.format(pose[2])},{'{:.4f}'.format(pose[3])},{'{:.4f}'.format(pose[4])},{'{:.4f}'.format(pose[5])},],0.5,0.25,0,0)"
+        cmd = (f"def my_program():\n"
+               f"  movel(p[{'{:.4f}'.format(pose[0])},{'{:.4f}'.format(pose[1])},{'{:.4f}'.format(pose[2])},{'{:.4f}'.format(pose[3])},{'{:.4f}'.format(pose[4])},{'{:.4f}'.format(pose[5])},],0.5,0.25,0,0)\n"
+               f"end\nmy_program()")
+        logger.info(f"发送脚本:{cmd}")
         if result == 1:
             return return_msg(f"命令 {cmd} 已发送，移动完成。")
         else:
@@ -616,8 +641,12 @@ def movel_y(ip: str, distance: float):
         pose[1] = pose[1] + distance
 
         robot_list[ip].movel(pose)
+        time.sleep(1)
         result = movelConfirm(ip, pose)
-        cmd = f"movel(p[{'{:.4f}'.format(pose[0])},{'{:.4f}'.format(pose[1])},{'{:.4f}'.format(pose[2])},{'{:.4f}'.format(pose[3])},{'{:.4f}'.format(pose[4])},{'{:.4f}'.format(pose[5])},],0.5,0.25,0,0)"
+        cmd = (f"def my_program():\n"
+               f"  movel(p[{'{:.4f}'.format(pose[0])},{'{:.4f}'.format(pose[1])},{'{:.4f}'.format(pose[2])},{'{:.4f}'.format(pose[3])},{'{:.4f}'.format(pose[4])},{'{:.4f}'.format(pose[5])},],0.5,0.25,0,0)\n"
+               f"end\nmy_program()")
+        logger.info(f"发送脚本:{cmd}")
         if result == 1:
             return return_msg(f"命令 {cmd} 已发送，移动完成。")
         else:
@@ -638,8 +667,12 @@ def movel_z(ip: str, distance: float):
         pose = robot_list[ip].get_actual_tcp_pose()
         pose[2] = pose[2] + distance
         robot_list[ip].movel(pose)
+        time.sleep(1)
         result = movelConfirm(ip, pose)
-        cmd = f"movel(p[{'{:.4f}'.format(pose[0])},{'{:.4f}'.format(pose[1])},{'{:.4f}'.format(pose[2])},{'{:.4f}'.format(pose[3])},{'{:.4f}'.format(pose[4])},{'{:.4f}'.format(pose[5])},],0.5,0.25,0,0)"
+        cmd = (f"def my_program():\n"
+               f"  movel(p[{'{:.4f}'.format(pose[0])},{'{:.4f}'.format(pose[1])},{'{:.4f}'.format(pose[2])},{'{:.4f}'.format(pose[3])},{'{:.4f}'.format(pose[4])},{'{:.4f}'.format(pose[5])},],0.5,0.25,0,0)\n"
+               f"end\nmy_program()")
+        logger.info(f"发送脚本:{cmd}")
         if result == 1:
             return return_msg(f"命令 {cmd} 已发送，移动完成。")
         else:
@@ -650,7 +683,7 @@ def movel_z(ip: str, distance: float):
 
 
 @mcp.tool()
-def draw_circle(ip: str, center: dict, r: float, coordinate="z"):
+def draw_circle(ip: str, center: list, r: float, coordinate="z"):
     """命令指定IP的机器人，给定圆心位置和半径，在水平或竖直方向画一个圆
         center：圆心的TCP位置
         r：半径（米）
@@ -680,9 +713,101 @@ def draw_circle(ip: str, center: dict, r: float, coordinate="z"):
 
             wp_4[1] = wp_4[1] - r
 
-        cmd = (f"movep(p{str(wp_1)}, a=1, v=0.25, r=0.025)\nmovec(p{str(wp_2)}, p{str(wp_3)}, a=1, v=0.25, "
-               f"r=0.025, mode=0)\nmovec(p{str(wp_4)}, p{str(wp_1)}, a=1, v=0.25, r=0.025, mode=0)")
+        cmd = (
+            f"def my_program():\n"
+            f"  movep(p{str(wp_1)}, a=1, v=0.25, r=0.025)\n"
+            f"  movec(p{str(wp_2)}, p{str(wp_3)}, a=1, v=0.25, r=0.025, mode=0)\n"
+            f"  movec(p{str(wp_4)}, p{str(wp_1)}, a=1, v=0.25, r=0.025, mode=0)\nend\nmy_program()")
+        logger.info(f"draw_circle 发送脚本:{cmd}")
+        robot_list[ip].robotConnector.RealTimeClient.SendProgram(cmd)
+        time.sleep(1)
+        return return_msg(f"命令已发送：{cmd}")
+    except Exception as e:
+        logger.error(f"命令发送失败: {str(e)}")
+        return return_msg(f"命令发送失败: {str(e)}")
 
+
+@mcp.tool()
+def draw_square(ip: str, origin: list, border: float, coordinate="z"):
+    """给定起点位置和边长，在水平或竖直方向画一个正方形
+        origin：画正方形时TCP的起点位置
+        border：边长（米）
+        coordinate：圆所在的平面。z：圆形所在的平面与基座所在平面垂直,其它：圆形所在的平面与基座所在平面平行。默认值：z。
+        """
+    try:
+        if '连接失败' in link_check(ip):
+            return return_msg(f"与机器人的连接已断开。")
+        wp_1 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
+        wp_2 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
+        wp_3 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
+        if coordinate.lower() == "z":
+            wp_1[1] = wp_1[1] + border
+
+            wp_2[1] = wp_2[1] + border
+            wp_2[2] = wp_2[2] - border
+
+            wp_3[2] = wp_3[2] - border
+
+        else:
+            wp_1[1] = wp_1[1] + border
+
+            wp_2[1] = wp_2[1] + border
+            wp_2[0] = wp_2[0] + border
+
+            wp_3[0] = wp_3[0] + border
+
+        cmd = (f"def my_program():\n"
+               f"  movel(p{str(origin)}, a=1, v=0.25)\n"
+               f"  movel(p{str(wp_1)}, a=1, v=0.25)\n"
+               f"  movel(p{str(wp_2)}, a=1, v=0.25)\n"
+               f"  movel(p{str(wp_3)}, a=1, v=0.25)\n"
+               f"  movel(p{str(origin)}, a=1, v=0.25)\nend\nmy_program()")
+        logger.info(f"draw_square 发送脚本:\n{cmd}")
+        robot_list[ip].robotConnector.RealTimeClient.SendProgram(cmd)
+        time.sleep(1)
+        return return_msg(f"命令已发送：{cmd}")
+    except Exception as e:
+        logger.error(f"命令发送失败: {str(e)}")
+        return return_msg(f"命令发送失败: {str(e)}")
+
+
+@mcp.tool()
+def draw_rectangle(ip: str, origin: list, width: float, height: float, coordinate="z"):
+    """给定起点位置和边长，在水平或竖直方向画一个正方形
+            origin：画长方形时TCP的起点位置
+            width：长（米）
+            height：宽（米）
+            coordinate：圆所在的平面。z：圆形所在的平面与基座所在平面垂直,其它：圆形所在的平面与基座所在平面平行。默认值：z。"""
+
+    try:
+        if '连接失败' in link_check(ip):
+            return return_msg(f"与机器人的连接已断开。")
+        wp_1 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
+        wp_2 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
+        wp_3 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
+        if coordinate.lower() == "z":
+            wp_1[1] = wp_1[1] + width
+
+            wp_2[1] = wp_2[1] + width
+            wp_2[2] = wp_2[2] - height
+
+            wp_3[2] = wp_3[2] - height
+
+        else:
+            wp_1[1] = wp_1[1] + width
+
+            wp_2[1] = wp_2[1] + width
+            wp_2[0] = wp_2[0] + height
+
+            wp_3[0] = wp_3[0] + height
+
+        cmd = (f"def my_program():\n"
+               f"  movel(p{str(origin)}, a=1, v=0.25)\n"
+               f"  movel(p{str(wp_1)}, a=1, v=0.25)\n"
+               f"  movel(p{str(wp_2)}, a=1, v=0.25)\n"
+               f"  movel(p{str(wp_3)}, a=1, v=0.25)\n"
+               f"  movel(p{str(origin)}, a=1, v=0.25)\nend\nmy_program()")
+        logger.info(f"draw_rectangle 发送脚本:\n{cmd}")
         robot_list[ip].robotConnector.RealTimeClient.SendProgram(cmd)
         return return_msg(f"命令已发送：{cmd}")
     except Exception as e:
@@ -910,10 +1035,10 @@ def start_data_recording(robot_id: str, record_types: list, duration: float = 0)
         
         # 映射记录类型字符串到枚举值
         type_map = {
-            "robot_state": RecordType.ROBOT_STATE,
-            "joint_data": RecordType.JOINT_DATA,
-            "tcp_data": RecordType.TCP_DATA,
-            "error_data": RecordType.ERROR_DATA
+            "robot_state": DataRecordType.ROBOT_STATE,
+            "joint_data": DataRecordType.JOINT_DATA,
+            "tcp_data": DataRecordType.TCP_DATA,
+            "error_data": DataRecordType.ERROR
         }
         
         record_enum_types = []
@@ -1089,84 +1214,6 @@ def compare_robots_performance(robot_ids: list, metric_columns: list, start_time
         return return_msg(f"比较机器人性能失败: {str(e)}")
 
 
-@mcp.tool()
-def draw_square(ip: str, origin: dict, border: float, coordinate="z"):
-    """给定起点位置和边长，在水平或竖直方向画一个正方形
-        origin：画正方形时TCP的起点位置
-        border：边长（米）
-        coordinate：圆所在的平面。z：圆形所在的平面与基座所在平面垂直,其它：圆形所在的平面与基座所在平面平行。默认值：z。
-        """
-    try:
-        if '连接失败' in link_check(ip):
-            return return_msg(f"与机器人的连接已断开。")
-        wp_1 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
-        wp_2 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
-        wp_3 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
-        if coordinate.lower() == "z":
-            wp_1[1] = wp_1[1] + border
-
-            wp_2[1] = wp_2[1] + border
-            wp_2[3] = wp_2[3] - border
-
-            wp_3[3] = wp_3[3] - border
-
-        else:
-            wp_1[1] = wp_1[1] + border
-
-            wp_2[1] = wp_2[1] + border
-            wp_2[0] = wp_2[0] + border
-
-            wp_3[0] = wp_3[0] + border
-
-        cmd = (f"movel(p{str(origin)}, a=1, v=0.25)\nmovel(p{str(wp_1)}, a=1, v=0.25)\n"
-               f"movel(p{str(wp_2)}, a=1, v=0.25)\nmovel(p{str(wp_3)}, a=1, v=0.25)\n"
-               f"movel(p{str(origin)}, a=1, v=0.25)")
-        robot_list[ip].robotConnector.RealTimeClient.SendProgram(cmd)
-        return return_msg(f"命令已发送：{cmd}")
-    except Exception as e:
-        logger.error(f"命令发送失败: {str(e)}")
-        return return_msg(f"命令发送失败: {str(e)}")
-
-
-@mcp.tool()
-def draw_rectangle(ip: str, origin: dict, width: float, height: float, coordinate="z"):
-    """给定起点位置和边长，在水平或竖直方向画一个正方形
-            origin：画长方形时TCP的起点位置
-            width：长（米）
-            height：宽（米）
-            coordinate：圆所在的平面。z：圆形所在的平面与基座所在平面垂直,其它：圆形所在的平面与基座所在平面平行。默认值：z。"""
-
-    try:
-        if '连接失败' in link_check(ip):
-            return return_msg(f"与机器人的连接已断开。")
-        wp_1 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
-        wp_2 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
-        wp_3 = [origin[0], origin[1], origin[2], origin[3], origin[4], origin[5]]
-        if coordinate.lower() == "z":
-            wp_1[1] = wp_1[1] + width
-
-            wp_2[1] = wp_2[1] + width
-            wp_2[3] = wp_2[3] - height
-
-            wp_3[3] = wp_3[3] - height
-
-        else:
-            wp_1[1] = wp_1[1] + width
-
-            wp_2[1] = wp_2[1] + width
-            wp_2[0] = wp_2[0] + height
-
-            wp_3[0] = wp_3[0] + height
-
-        cmd = (f"movel(p{str(origin)}, a=1, v=0.25)\nmovel(p{str(wp_1)}, a=1, v=0.25)\n"
-               f"movel(p{str(wp_2)}, a=1, v=0.25)\nmovel(p{str(wp_3)}, a=1, v=0.25)\n"
-               f"movel(p{str(origin)}, a=1, v=0.25)")
-        robot_list[ip].robotConnector.RealTimeClient.SendProgram(cmd)
-        return return_msg(f"命令已发送：{cmd}")
-    except Exception as e:
-        logger.error(f"命令发送失败: {str(e)}")
-        return return_msg(f"命令发送失败: {str(e)}")
-
 
 # Main execution
 
@@ -1174,11 +1221,11 @@ def main():
     """Run the MCP server"""
     logger.info("Nonead-Universal-Robots-MCP  启动")
     set_robot_list()
-    
+
     # 初始化扩展模块
     logger.info("初始化扩展功能模块...")
     initialize_extended_modules()
-    
+
     logger.info("MCP服务器启动中...")
     mcp.run()
 

@@ -132,45 +132,51 @@ nUR_MCP_SERVER是基于MCP（Model Control Protocol）接口协议构建的智�
 - 协议兼容性：MCP v2.1+ / URScript v5.0+
 - 并发处理能力：200+ TPS
 
-**以下是nUR_MCP_SERVER工具的功能归类表格介绍：**  
+**以下是 nUR_MCP_SERVER 工具的功能归类表格（自动从源码生成）:**
 
-| 工具ID | 功能分类 | 功能描述 | 关键参数 |
+| 工具名 | 功能分类 | 简要描述 | 主要参数 |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | 连接管理 | 连接UR机器人 | ip:机器人IP |
-| fcr4pIqoIXyxh3ko9FOsWU | 连接管理 | 断开UR机器人连接 | ip:机器人IP |
-| fNKAydKkxHwmGFgyrePBsN | 状态监控 | 获取开机时长(秒) | ip:机器人IP |
-| fYTMsGvSRpUdWmURng7kGX | 寄存器操作 | 获取Int寄存器输出(0-23) | ip:机器人IP, index:寄存器索引 |
-| fvfqDMdDJer6kpbCzwFL1D | 寄存器操作 | 获取Double寄存器输出(0-23) | ip:机器人IP, index:寄存器索引 |
-| fCJ6sRw9m0ArdZ-MCaeNWK | 寄存器操作 | 获取Double寄存器输出(0-31) | ip:机器人IP, index:寄存器索引 |
-| f_ZXAIUv-eqHelwWxrzDHe | 设备信息 | 获取序列号 | ip:机器人IP |
-| fZ2ALt5kD50gV9AdEgBrRO | 设备信息 | 获取型号 | ip:机器人IP |
-| fEtHcw5RNF54X9RYIEU-1m | 运动控制 | 获取实时TCP坐标 | ip:机器人IP |
-| ftsb2AsiqiPqSBxHIwALOx | 运动控制 | 获取实时关节角度 | ip:机器人IP |
-| fXmkr4PLkHKF0wgQGEHzLt | 运动控制 | 发送关节姿态指令 | ip:机器人IP, q:关节角度(弧度) |
-| fWdukQrgFZeK-DEcST4AwO | 运动控制 | 发送TCP直线移动指令 | ip:机器人IP, pose:TCP位置 |
-| f2gbgju7QsymJa4wPgZQ0T | 运动控制 | X轴直线移动 | ip:机器人IP, distance:移动距离(米) |
-| fS6rCxVp498s5edU7jCMB3 | 运动控制 | Y轴直线移动 | ip:机器人IP, distance:移动距离(米) |
-| fJps7j-T3lwzXhp8p0_suy | 运动控制 | Z轴直线移动 | ip:机器人IP, distance:移动距离(米) |
-| fTMj5413O5CzsORAyBYXj8 | 程序控制 | 加载UR程序 | ip:机器人IP, program_name:程序名称 |
-| fqiYJ1c9fqCs5eYd-yKEeJ | 程序控制 | 加载并执行UR程序 | ip:机器人IP, program_name:程序名称 |
-| fW6-wrPoqm2bE3bMgtLbLP | 程序控制 | 停止当前程序 | ip:机器人IP |
-| fsEmm-VX3CCY_XvnCDms7f | 程序控制 | 暂停当前程序 | ip:机器人IP |
-| f83-fUQBd-YRSdIQDpuYmW | 状态监控 | 获取当前电压 | ip:机器人IP |
-| foMoD2L690vRdQxdW_gRNl | 状态监控 | 获取当前电流 | ip:机器人IP |
-| fDZBXqofuIb-7IjS6t2YJ2 | 状态监控 | 获取关节电压 | ip:机器人IP |
-| fgAa_kwSmXmvld6Alx39ij | 状态监控 | 获取关节电流 | ip:机器人IP |
-| furAKHVnYvORJ9R7N7vpbl | 状态监控 | 获取关节温度 | ip:机器人IP |
-| fuNb7TgOgWNukjAVjusMN4 | 状态监控 | 获取运行状态 | ip:机器人IP |
-| fD12XJtqjgI46Oufwt928c | 状态监控 | 获取程序执行状态 | ip:机器人IP |
-| fMLa2mjlactTbD_CCKB1tX | 设备信息 | 获取软件版本 | ip:机器人IP |
-| fWXQKGQ6J5mas9K9mGPK3x | 设备信息 | 获取安全模式 | ip:机器人IP |
-| f81vKugz9xnncjirTC3B6A | 程序控制 | 获取程序列表 | ip:机器人IP, username/password:SSH凭证 |
-| ffaaQZeknwwTISLYdYqM0_ | 程序控制 | 发送程序脚本 | ip:机器人IP, script:脚本内容 |
-| fsWlT3tCOn1ub-kUZCrq7E | 运动控制 | 画圆运动 | ip:机器人IP, center:圆心TCP位置, r:半径(米) |
-| f7y1QpjnA9s1bzfLeOkTnS | 运动控制 | 画正方形 | ip:机器人IP, origin:起点TCP位置, border:边长(米) |
-| fuN_LLSc22VKXWXwbwNARo | 运动控制 | 画矩形 | ip:机器人IP, origin:起点TCP位置, width/height:长宽(米) |
+| `connect_ur` | 连接管理 | 建立与指定 IP 的 UR 机器人连接 | `ip` |
+| `disconnect_ur` | 连接管理 | 断开与指定机器人的连接 | `ip` |
+| `get_serial_number` | 设备信息 | 获取机器人序列号 | `ip` |
+| `get_time` | 状态监控 | 获取机器人开机时长（秒） | `ip` |
+| `get_ur_software_version` | 设备信息 | 获取 Polyscope 软件版本 | `ip` |
+| `get_robot_model` | 设备信息 | 获取机器人型号 | `ip` |
+| `get_safety_mode` | 设备信息 | 获取安全模式 | `ip` |
+| `get_robot_mode` | 状态监控 | 获取机器人运行模式 | `ip` |
+| `get_program_state` | 程序控制/状态 | 获取当前加载程序与执行状态 | `ip` |
+| `get_actual_tcp_pose` | 运动控制 | 获取当前 TCP 位姿 | `ip` |
+| `get_actual_joint_pose` | 运动控制 | 获取当前关节角度 | `ip` |
+| `get_output_int_register` | 寄存器操作 | 读取 Int 寄存器 | `ip, index` |
+| `get_output_double_register` | 寄存器操作 | 读取 Double 寄存器 | `ip, index` |
+| `get_output_bit_register` | 寄存器操作 | 读取 Bool 寄存器 | `ip, index` |
+| `get_actual_robot_voltage` | 状态监控 | 获取机器人电压（V） | `ip` |
+| `get_actual_robot_current` | 状态监控 | 获取机器人电流（A） | `ip` |
+| `get_actual_joint_voltage` | 状态监控 | 获取各关节电压（V） | `ip` |
+| `get_actual_joint_current` | 状态监控 | 获取各关节电流（A） | `ip` |
+| `get_joint_temperatures` | 状态监控 | 获取各关节温度（°C） | `ip` |
+| `get_programs` | 程序控制 | 列出机器人上 `/programs` 下的 .urp 文件（通过 SSH） | `ip, username, password` |
+| `send_program_script` | 程序控制 | 发送并执行实时脚本 | `ip, script` |
+| `movej` | 运动控制 | 关节空间运动命令 | `ip, q, a, v, t, r` |
+| `movel` | 运动控制 | TCP 直线运动命令 | `ip, pose, a, v, t, r` |
+| `movel_x` | 运动控制 | 沿 X 轴移动（相对） | `ip, distance` |
+| `movel_y` | 运动控制 | 沿 Y 轴移动（相对） | `ip, distance` |
+| `movel_z` | 运动控制 | 沿 Z 轴移动（相对） | `ip, distance` |
+| `draw_circle` | 运动控制 | 在指定平面画圆 | `ip, center, r, coordinate` |
+| `draw_square` | 运动控制 | 在指定平面画正方形 | `ip, origin, border, coordinate` |
+| `draw_rectangle` | 运动控制 | 在指定平面画长方形 | `ip, origin, width, height, coordinate` |
+| `setup_multi_robot_coordination` | 多机协同 | 注册机器人并设置协作模式 | `robot_ids, collaboration_mode` |
+| `create_collaborative_task` | 多机协同 | 创建协同任务 | `task_name, robot_assignments, dependencies` |
+| `execute_collaborative_task` | 多机协同 | 执行协同任务 | `task_id` |
+| `generate_bezier_path` | 轨迹规划 | 根据控制点生成贝塞尔曲线路径 | `control_points, num_points` |
+| `optimize_trajectory` | 轨迹规划 | 优化给定路径（时间/能耗/平滑） | `ip, waypoints, optimization_type` |
+| `start_data_recording` | 数据记录 | 启动数据记录会话 | `robot_id, record_types, duration` |
+| `stop_data_recording` | 数据记录 | 停止数据记录会话 | `session_id` |
+| `analyze_robot_data` | 数据分析 | 对采集数据执行分析 | `robot_id, analysis_type, start_time, end_time` |
+| `generate_robot_report` | 数据分析 | 生成机器人运行报告（PDF/JSON 等） | `robot_id, start_time, end_time, report_path` |
+| `compare_robots_performance` | 数据分析 | 比较多机器人性能 | `robot_ids, metric_columns, start_time, end_time` |
 
-注：所有工具均需先建立机器人连接后才能使用。
+注：所有工具多数需要先建立机器人连接后才能使用；部分工具依赖扩展模块（轨迹规划/数据记录/分析/多机协调），需先初始化成功。
 
 
 ## 3. 免责申明
@@ -276,9 +282,9 @@ MacOS: ~/Library/Application Support/Claude/claude_desktop_config.json
         "nUR_MCP_SERVER": {
           "command": "uvx",
           "args": [
-            "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+            "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
             "nonead-universal-robots-mcp"
-          ]
+              ]
         }
       }
     }
@@ -290,9 +296,9 @@ Windows: %APPDATA%/Claude/claude_desktop_config.json
         "nUR_MCP_SERVER": {
           "command": "uvx",
           "args": [
-            "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+            "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
             "nonead-universal-robots-mcp"
-          ]
+              ]
         }
       }
     }
@@ -319,7 +325,7 @@ MacOS & Linux:
       ],
       "command": "uvx",
       "args": [
-        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
         "nonead-universal-robots-mcp"
       ],
       "installSource": "unknown"
@@ -347,7 +353,7 @@ MacOS & Linux:
       "tags": [],
       "command": "uvx",
       "args": [
-        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
         "nonead-universal-robots-mcp"
       ],
       "installSource": "unknown"
@@ -365,8 +371,8 @@ MacOS & Linux:
         "nUR_MCP_SERVER": {
             "command": "uvx",
             "args": [
-                "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
-                "nonead-universal-robots-mcp"
+              "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
+              "nonead-universal-robots-mcp"
             ]
          }
       }
@@ -379,8 +385,8 @@ Windows:
         "nUR_MCP_SERVER": {
             "command": "uvx",
             "args": [
-                "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
-                "nonead-universal-robots-mcp"
+              "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
+              "nonead-universal-robots-mcp"
             ]
          }
       }

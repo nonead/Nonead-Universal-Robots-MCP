@@ -136,12 +136,12 @@ LLMベースのコード生成フレームワークにより、自然言語コ�
 
 | ツールID | 機能分類 | 機能説明 | 主要パラメータ |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | 接続管理 | URロボット接続 | ip:ロボットIP |
-| fcr4pIqoIXyxh3ko9FOsWU | 接続管理 | URロボット切断 | ip:ロボットIP |
-| fNKAydKkxHwmGFgyrePBsN | 状態監視 | 稼働時間取得(秒) | ip:ロボットIP |
-| fYTMsGvSRpUdWmURng7kGX | レジスタ操作 | Intレジスタ出力取得(0-23) | ip:ロボットIP, index:レジスタインデックス |
-| fvfqDMdDJer6kpbCzwFL1D | レジスタ操作 | Doubleレジスタ出力取得(0-23) | ip:ロボットIP, index:レジスタインデックス |
-| fCJ6sRw9m0ArdZ-MCaeNWK | レジスタ操作 | Doubleレジスタ出力取得(0-31) | ip:ロボットIP, index:レジスタインデックス |
+| fkUCFg7YmxSflgfmJawHeo (`connect_ur`) | 接続管理 | URロボット接続 | ip:ロボットIP |
+| fcr4pIqoIXyxh3ko9FOsWU (`disconnect_ur`) | 接続管理 | URロボット切断 | ip:ロボットIP |
+| fNKAydKkxHwmGFgyrePBsN (`get_time`) | 状態監視 | 稼働時間取得(秒) | ip:ロボットIP |
+| fYTMsGvSRpUdWmURng7kGX (`get_output_int_register`) | レジスタ操作 | Intレジスタ出力取得(0-23) | ip:ロボットIP, index:レジスタインデックス |
+| fvfqDMdDJer6kpbCzwFL1D (`get_output_double_register`) | レジスタ操作 | Doubleレジスタ出力取得(0-23) | ip:ロボットIP, index:レジスタインデックス |
+| fCJ6sRw9m0ArdZ-MCaeNWK (`get_output_bit_register`) | レジスタ操作 | Doubleレジスタ出力取得(0-31) | ip:ロボットIP, index:レジスタインデックス |
 | f_ZXAIUv-eqHelwWxrzDHe | デバイス情報 | シリアル番号取得 | ip:ロボットIP |
 | fZ2ALt5kD50gV9AdEgBrRO | デバイス情報 | モデル取得 | ip:ロボットIP |
 | fEtHcw5RNF54X9RYIEU-1m | 運動制御 | リアルタイムTCP座標取得 | ip:ロボットIP |

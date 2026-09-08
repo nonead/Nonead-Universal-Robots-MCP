@@ -67,7 +67,7 @@ class VisualizationType(Enum):
     HISTOGRAM = "histogram"                # 直方图
     HEATMAP = "heatmap"                    # 热力图
     BOX = "box"                            # 箱线图
-    3D_SCATTER = "3d_scatter"              # 3D散点图
+    THREE_D_SCATTER = "3d_scatter"              # 3D散点图
     TRAJECTORY = "trajectory"              # 轨迹图
     PIE = "pie"                            # 饼图
     RADAR = "radar"                        # 雷达图
@@ -271,7 +271,7 @@ class StatisticalAnalyzer(DataAnalyzer):
         if columns:
             numeric_cols = [col for col in columns if col in numeric_cols]
         
-        if not numeric_cols:
+        if len(numeric_cols) == 0:
             return {'error': '没有找到数值列'}
         
         results = {}

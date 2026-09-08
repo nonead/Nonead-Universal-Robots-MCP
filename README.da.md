@@ -155,39 +155,39 @@ Specifikationer:
 
 | Værktøjs-ID | Funktionskategori | Funktionsbeskrivelse | Nøgleparametre |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | Forbindelseshåndtering | Forbind til UR-robot | ip:robot-IP |
-| fcr4pIqoIXyxh3ko9FOsWU | Forbindelseshåndtering | Afbryd forbindelse til UR-robot | ip:robot-IP |
-| fNKAydKkxHwmGFgyrePBsN | Statusovervågning | Hent opetid (sekunder) | ip:robot-IP |
-| fYTMsGvSRpUdWmURng7kGX | Registeroperation | Hent Int-registeroutput (0-23) | ip:robot-IP, index:registerindeks |
-| fvfqDMdDJer6kpbCzwFL1D | Registeroperation | Hent Double-registeroutput (0-23) | ip:robot-IP, index:registerindeks |
-| fCJ6sRw9m0ArdZ-MCaeNWK | Registeroperation | Hent Double-registeroutput (0-31) | ip:robot-IP, index:registerindeks |
-| f_ZXAIUv-eqHelwWxrzDHe | Enhedsoplysninger | Hent serienummer | ip:robot-IP |
-| fZ2ALt5kD50gV9AdEgBrRO | Enhedsoplysninger | Hent model | ip:robot-IP |
-| fEtHcw5RNF54X9RYIEU-1m | Bevægelseskontrol | Hent realtids TCP-koordinater | ip:robot-IP |
-| ftsb2AsiqiPqSBxHIwALOx | Bevægelseskontrol | Hent realtids ledvinkler | ip:robot-IP |
-| fXmkr4PLkHKF0wgQGEHzLt | Bevægelseskontrol | Send ledstillingkommando | ip:robot-IP, q:ledvinkler(radianer) |
-| fWdukQrgFZeK-DEcST4AwO | Bevægelseskontrol | Send TCP-lineærbevægelseskommando | ip:robot-IP, pose:TCP-position |
-| f2gbgju7QsymJa4wPgZQ0T | Bevægelseskontrol | Lineær bevægelse X-akse | ip:robot-IP, distance:bevægelsesafstand(meter) |
-| fS6rCxVp498s5edU7jCMB3 | Bevægelseskontrol | Lineær bevægelse Y-akse | ip:robot-IP, distance:bevægelsesafstand(meter) |
-| fJps7j-T3lwzXhp8p0_suy | Bevægelseskontrol | Lineær bevægelse Z-akse | ip:robot-IP, distance:bevægelsesafstand(meter) |
-| fTMj5413O5CzsORAyBYXj8 | Programkontrol | Indlæs UR-program | ip:robot-IP, program_name:programnavn |
-| fqiYJ1c9fqCs5eYd-yKEeJ | Programkontrol | Indlæs og udfør UR-program | ip:robot-IP, program_name:programnavn |
-| fW6-wrPoqm2bE3bMgtLbLP | Programkontrol | Stop nuværende program | ip:robot-IP |
-| fsEmm-VX3CCY_XvnCDms7f | Programkontrol | Paus nuværende program | ip:robot-IP |
-| f83-fUQBd-YRSdIQDpuYmW | Statusovervågning | Hent nuværende spænding | ip:robot-IP |
-| foMoD2L690vRdQxdW_gRNl | Statusovervågning | Hent nuværende strøm | ip:robot-IP |
-| fDZBXqofuIb-7IjS6t2YJ2 | Statusovervågning | Hent ledspænding | ip:robot-IP |
-| fgAa_kwSmXmvld6Alx39ij | Statusovervågning | Hent ledstrøm | ip:robot-IP |
-| furAKHVnYvORJ9R7N7vpbl | Statusovervågning | Hent ledtemperatur | ip:robot-IP |
-| fuNb7TgOgWNukjAVjusMN4 | Statusovervågning | Hent driftsstatus | ip:robot-IP |
-| fD12XJtqjgI46Oufwt928c | Statusovervågning | Hent programudførelsestatus | ip:robot-IP |
-| fMLa2mjlactTbD_CCKB1tX | Enhedsoplysninger | Hent softwareversion | ip:robot-IP |
-| fWXQKGQ6J5mas9K9mGPK3x | Enhedsoplysninger | Hent sikkerhedstilstand | ip:robot-IP |
-| f81vKugz9xnncjirTC3B6A | Programkontrol | Hent programliste | ip:robot-IP, username/password:SSH-legitimationsoplysninger |
-| ffaaQZeknwwTISLYdYqM0_ | Programkontrol | Send programscript | ip:robot-IP, script:scriptindhold |
-| fsWlT3tCOn1ub-kUZCrq7E | Bevægelseskontrol | Cirkulær bevægelse | ip:robot-IP, center:TCP-centreposition, r:radius(meter) |
-| f7y1QpjnA9s1bzfLeOkTnS | Bevægelseskontrol | Tegn kvadrat | ip:robot-IP, origin:TCP-startposition, border:sidelængde(meter) |
-| fuN_LLSc22VKXWXwbwNARo | Bevægelseskontrol | Tegn rektangel | ip:robot-IP, origin:TCP-startposition, width/height:bredde/højde(meter) |
+| fkUCFg7YmxSflgfmJawHeo (`connect_ur`) | Forbindelseshåndtering | Forbind til UR-robot | ip:robot-IP |
+| fcr4pIqoIXyxh3ko9FOsWU (`disconnect_ur`) | Forbindelseshåndtering | Afbryd forbindelse til UR-robot | ip:robot-IP |
+| fNKAydKkxHwmGFgyrePBsN (`get_time`) | Statusovervågning | Hent opetid (sekunder) | ip:robot-IP |
+| fYTMsGvSRpUdWmURng7kGX (`get_output_int_register`) | Registeroperation | Hent Int-registeroutput (0-23) | ip:robot-IP, index:registerindeks |
+| fvfqDMdDJer6kpbCzwFL1D (`get_output_double_register`) | Registeroperation | Hent Double-registeroutput (0-23) | ip:robot-IP, index:registerindeks |
+| fCJ6sRw9m0ArdZ-MCaeNWK (`get_output_bit_register`) | Registeroperation | Hent Double-registeroutput (0-31) | ip:robot-IP, index:registerindeks |
+| f_ZXAIUv-eqHelwWxrzDHe (`get_serial_number`) | Enhedsoplysninger | Hent serienummer | ip:robot-IP |
+| fZ2ALt5kD50gV9AdEgBrRO (`get_robot_model`) | Enhedsoplysninger | Hent model | ip:robot-IP |
+| fEtHcw5RNF54X9RYIEU-1m (`get_actual_tcp_pose`) | Bevægelseskontrol | Hent realtids TCP-koordinater | ip:robot-IP |
+| ftsb2AsiqiPqSBxHIwALOx (`get_actual_joint_pose`) | Bevægelseskontrol | Hent realtids ledevinkler | ip:robot-IP |
+| fXmkr4PLkHKF0wgQGEHzLt (`movej`) | Bevægelseskontrol | Send ledstillingkommando | ip:robot-IP, q:ledvinkler(radianer) |
+| fWdukQrgFZeK-DEcST4AwO (`movel`) | Bevægelseskontrol | Send TCP-lineærbevægelseskommando | ip:robot-IP, pose:TCP-position |
+| f2gbgju7QsymJa4wPgZQ0T (`movel_x`) | Bevægelseskontrol | Lineær bevægelse X-akse | ip:robot-IP, distance:bevægelsesafstand(meter) |
+| fS6rCxVp498s5edU7jCMB3 (`movel_y`) | Bevægelseskontrol | Lineær bevægelse Y-akse | ip:robot-IP, distance:bevægelsesafstand(meter) |
+| fJps7j-T3lwzXhp8p0_suy (`movel_z`) | Bevægelseskontrol | Lineær bevægelse Z-akse | ip:robot-IP, distance:bevægelsesafstand(meter) |
+| fTMj5413O5CzsORAyBYXj8 (`load_program`) | Programkontrol | Indlæs UR-program | ip:robot-IP, program_name:programnavn |
+| fqiYJ1c9fqCs5eYd-yKEeJ (`load_and_run_program`) | Programkontrol | Indlæs og udfør UR-program | ip:robot-IP, program_name:programnavn |
+| fW6-wrPoqm2bE3bMgtLbLP (`stop_program`) | Programkontrol | Stop nuværende program | ip:robot-IP |
+| fsEmm-VX3CCY_XvnCDms7f (`pause_program`) | Programkontrol | Paus nuværende program | ip:robot-IP |
+| f83-fUQBd-YRSdIQDpuYmW (`get_actual_robot_voltage`) | Statusovervågning | Hent nuværende spænding | ip:robot-IP |
+| foMoD2L690vRdQxdW_gRNl (`get_actual_robot_current`) | Statusovervågning | Hent nuværende strøm | ip:robot-IP |
+| fDZBXqofuIb-7IjS6t2YJ2 (`get_actual_joint_voltage`) | Statusovervågning | Hent ledspænding | ip:robot-IP |
+| fgAa_kwSmXmvld6Alx39ij (`get_actual_joint_current`) | Statusovervågning | Hent ledstrøm | ip:robot-IP |
+| furAKHVnYvORJ9R7N7vpbl (`get_joint_temperatures`) | Statusovervågning | Hent ledtemperatur | ip:robot-IP |
+| fuNb7TgOgWNukjAVjusMN4 (`get_robot_mode`) | Statusovervågning | Hent driftsstatus | ip:robot-IP |
+| fD12XJtqjgI46Oufwt928c (`get_program_state`) | Statusovervågning | Hent programudførelsestatus | ip:robot-IP |
+| fMLa2mjlactTbD_CCKB1tX (`get_ur_software_version`) | Enhedsoplysninger | Hent softwareversion | ip:robot-IP |
+| fWXQKGQ6J5mas9K9mGPK3x (`get_safety_mode`) | Enhedsoplysninger | Hent sikkerhedstilstand | ip:robot-IP |
+| f81vKugz9xnncjirTC3B6A (`get_programs`) | Programkontrol | Hent programliste | ip:robot-IP, username/password:SSH-legitimationsoplysninger |
+| ffaaQZeknwwTISLYdYqM0_ (`send_program_script`) | Programkontrol | Send programscript | ip:robot-IP, script:scriptindhold |
+| fsWlT3tCOn1ub-kUZCrq7E (`draw_circle`) | Bevægelseskontrol | Cirkulær bevægelse | ip:robot-IP, center:TCP-centreposition, r:radius(meter) |
+| f7y1QpjnA9s1bzfLeOkTnS (`draw_square`) | Bevægelseskontrol | Tegn kvadrat | ip:robot-IP, origin:TCP-startposition, border:sidelængde(meter) |
+| fuN_LLSc22VKXWXwbwNARo (`draw_rectangle`) | Bevægelseskontrol | Tegn rektangel | ip:robot-IP, origin:TCP-startposition, width/height:bredde/højde(meter) |
 
 Bemærk: Alle værktøjer kræver en etableret robotforbindelse før brug.
 

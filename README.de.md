@@ -134,39 +134,39 @@ Technische Daten:
 
 | Tool-ID | Funktionskategorie | Funktionsbeschreibung | Schlüsselparameter |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | Verbindungsverwaltung | UR-Roboter verbinden | ip:Roboter-IP |
-| fcr4pIqoIXyxh3ko9FOsWU | Verbindungsverwaltung | UR-Roboter trennen | ip:Roboter-IP |
-| fNKAydKkxHwmGFgyrePBsN | Statusüberwachung | Betriebszeit abrufen (Sekunden) | ip:Roboter-IP |
-| fYTMsGvSRpUdWmURng7kGX | Registeroperation | Int-Registerausgang abrufen (0-23) | ip:Roboter-IP, index:Registerindex |
-| fvfqDMdDJer6kpbCzwFL1D | Registeroperation | Double-Registerausgang abrufen (0-23) | ip:Roboter-IP, index:Registerindex |
-| fCJ6sRw9m0ArdZ-MCaeNWK | Registeroperation | Double-Registerausgang abrufen (0-31) | ip:Roboter-IP, index:Registerindex |
-| f_ZXAIUv-eqHelwWxrzDHe | Geräteinformation | Seriennummer abrufen | ip:Roboter-IP |
-| fZ2ALt5kD50gV9AdEgBrRO | Geräteinformation | Modell abrufen | ip:Roboter-IP |
-| fEtHcw5RNF54X9RYIEU-1m | Bewegungssteuerung | Echtzeit-TCP-Koordinaten abrufen | ip:Roboter-IP |
-| ftsb2AsiqiPqSBxHIwALOx | Bewegungssteuerung | Echtzeit-Gelenkwinkel abrufen | ip:Roboter-IP |
-| fXmkr4PLkHKF0wgQGEHzLt | Bewegungssteuerung | Gelenkpositionsbefehl senden | ip:Roboter-IP, q:Gelenkwinkel(Radiant) |
-| fWdukQrgFZeK-DEcST4AwO | Bewegungssteuerung | TCP-Linearbewegungsbefehl senden | ip:Roboter-IP, pose:TCP-Position |
-| f2gbgju7QsymJa4wPgZQ0T | Bewegungssteuerung | Linearbewegung X-Achse | ip:Roboter-IP, distance:Bewegungsstrecke(Meter) |
-| fS6rCxVp498s5edU7jCMB3 | Bewegungssteuerung | Linearbewegung Y-Achse | ip:Roboter-IP, distance:Bewegungsstrecke(Meter) |
-| fJps7j-T3lwzXhp8p0_suy | Bewegungssteuerung | Linearbewegung Z-Achse | ip:Roboter-IP, distance:Bewegungsstrecke(Meter) |
-| fTMj5413O5CzsORAyBYXj8 | Programmsteuerung | UR-Programm laden | ip:Roboter-IP, program_name:Programmname |
-| fqiYJ1c9fqCs5eYd-yKEeJ | Programmsteuerung | UR-Programm laden und ausführen | ip:Roboter-IP, program_name:Programmname |
-| fW6-wrPoqm2bE3bMgtLbLP | Programmsteuerung | Aktuelles Programm stoppen | ip:Roboter-IP |
-| fsEmm-VX3CCY_XvnCDms7f | Programmsteuerung | Aktuelles Programm pausieren | ip:Roboter-IP |
-| f83-fUQBd-YRSdIQDpuYmW | Statusüberwachung | Aktuelle Spannung abrufen | ip:Roboter-IP |
-| foMoD2L690vRdQxdW_gRNl | Statusüberwachung | Aktuellen Strom abrufen | ip:Roboter-IP |
-| fDZBXqofuIb-7IjS6t2YJ2 | Statusüberwachung | Gelenkspannung abrufen | ip:Roboter-IP |
-| fgAa_kwSmXmvld6Alx39ij | Statusüberwachung | Gelenkstrom abrufen | ip:Roboter-IP |
-| furAKHVnYvORJ9R7N7vpbl | Statusüberwachung | Gelenktemperatur abrufen | ip:Roboter-IP |
-| fuNb7TgOgWNukjAVjusMN4 | Statusüberwachung | Betriebsstatus abrufen | ip:Roboter-IP |
-| fD12XJtqjgI46Oufwt928c | Statusüberwachung | Programmausführungsstatus abrufen | ip:Roboter-IP |
-| fMLa2mjlactTbD_CCKB1tX | Geräteinformation | Softwareversion abrufen | ip:Roboter-IP |
-| fWXQKGQ6J5mas9K9mGPK3x | Geräteinformation | Sicherheitsmodus abrufen | ip:Roboter-IP |
-| f81vKugz9xnncjirTC3B6A | Programmsteuerung | Programmliste abrufen | ip:Roboter-IP, username/password:SSH-Anmeldedaten |
-| ffaaQZeknwwTISLYdYqM0_ | Programmsteuerung | Programmskript senden | ip:Roboter-IP, script:Skriptinhalt |
-| fsWlT3tCOn1ub-kUZCrq7E | Bewegungssteuerung | Kreisbewegung | ip:Roboter-IP, center:TCP-Mittelpunktposition, r:Radius(Meter) |
-| f7y1QpjnA9s1bzfLeOkTnS | Bewegungssteuerung | Quadrat zeichnen | ip:Roboter-IP, origin:TCP-Startposition, border:Seitenlänge(Meter) |
-| fuN_LLSc22VKXWXwbwNARo | Bewegungssteuerung | Rechteck zeichnen | ip:Roboter-IP, origin:TCP-Startposition, width/height:Breite/Höhe(Meter) |
+| fkUCFg7YmxSflgfmJawHeo (`connect_ur`) | Verbindungsverwaltung | UR-Roboter verbinden | ip:Roboter-IP |
+| fcr4pIqoIXyxh3ko9FOsWU (`disconnect_ur`) | Verbindungsverwaltung | UR-Roboter trennen | ip:Roboter-IP |
+| fNKAydKkxHwmGFgyrePBsN (`get_time`) | Statusüberwachung | Betriebszeit abrufen (Sekunden) | ip:Roboter-IP |
+| fYTMsGvSRpUdWmURng7kGX (`get_output_int_register`) | Registeroperation | Int-Registerausgang abrufen (0-23) | ip:Roboter-IP, index:Registerindex |
+| fvfqDMdDJer6kpbCzwFL1D (`get_output_double_register`) | Registeroperation | Double-Registerausgang abrufen (0-23) | ip:Roboter-IP, index:Registerindex |
+| fCJ6sRw9m0ArdZ-MCaeNWK (`get_output_bit_register`) | Registeroperation | Double-Registerausgang abrufen (0-31) | ip:Roboter-IP, index:Registerindex |
+| f_ZXAIUv-eqHelwWxrzDHe (`get_serial_number`) | Geräteinformation | Seriennummer abrufen | ip:Roboter-IP |
+| fZ2ALt5kD50gV9AdEgBrRO (`get_robot_model`) | Geräteinformation | Modell abrufen | ip:Roboter-IP |
+| fEtHcw5RNF54X9RYIEU-1m (`get_actual_tcp_pose`) | Bewegungssteuerung | Echtzeit-TCP-Koordinaten abrufen | ip:Roboter-IP |
+| ftsb2AsiqiPqSBxHIwALOx (`get_actual_joint_pose`) | Bewegungssteuerung | Echtzeit-Gelenkwinkel abrufen | ip:Roboter-IP |
+| fXmkr4PLkHKF0wgQGEHzLt (`movej`) | Bewegungssteuerung | Gelenkpositionsbefehl senden | ip:Roboter-IP, q:Gelenkwinkel(Radiant) |
+| fWdukQrgFZeK-DEcST4AwO (`movel`) | Bewegungssteuerung | TCP-Linearbewegungsbefehl senden | ip:Roboter-IP, pose:TCP-Position |
+| f2gbgju7QsymJa4wPgZQ0T (`movel_x`) | Bewegungssteuerung | Linearbewegung X-Achse | ip:Roboter-IP, distance:Bewegungsstrecke(Meter) |
+| fS6rCxVp498s5edU7jCMB3 (`movel_y`) | Bewegungssteuerung | Linearbewegung Y-Achse | ip:Roboter-IP, distance:Bewegungsstrecke(Meter) |
+| fJps7j-T3lwzXhp8p0_suy (`movel_z`) | Bewegungssteuerung | Linearbewegung Z-Achse | ip:Roboter-IP, distance:Bewegungsstrecke(Meter) |
+| fTMj5413O5CzsORAyBYXj8 (`load_program`) | Programmsteuerung | UR-Programm laden | ip:Roboter-IP, program_name:Programmname |
+| fqiYJ1c9fqCs5eYd-yKEeJ (`load_and_run_program`) | Programmsteuerung | UR-Programm laden und ausführen | ip:Roboter-IP, program_name:Programmname |
+| fW6-wrPoqm2bE3bMgtLbLP (`stop_program`) | Programmsteuerung | Aktuelles Programm stoppen | ip:Roboter-IP |
+| fsEmm-VX3CCY_XvnCDms7f (`pause_program`) | Programmsteuerung | Aktuelles Programm pausieren | ip:Roboter-IP |
+| f83-fUQBd-YRSdIQDpuYmW (`get_actual_robot_voltage`) | Statusüberwachung | Aktuelle Spannung abrufen | ip:Roboter-IP |
+| foMoD2L690vRdQxdW_gRNl (`get_actual_robot_current`) | Statusüberwachung | Aktuellen Strom abrufen | ip:Roboter-IP |
+| fDZBXqofuIb-7IjS6t2YJ2 (`get_actual_joint_voltage`) | Statusüberwachung | Gelenkspannung abrufen | ip:Roboter-IP |
+| fgAa_kwSmXmvld6Alx39ij (`get_actual_joint_current`) | Statusüberwachung | Gelenkstrom abrufen | ip:Roboter-IP |
+| furAKHVnYvORJ9R7N7vpbl (`get_joint_temperatures`) | Statusüberwachung | Gelenktemperatur abrufen | ip:Roboter-IP |
+| fuNb7TgOgWNukjAVjusMN4 (`get_robot_mode`) | Statusüberwachung | Betriebsstatus abrufen | ip:Roboter-IP |
+| fD12XJtqjgI46Oufwt928c (`get_program_state`) | Statusüberwachung | Programmausführungsstatus abrufen | ip:Roboter-IP |
+| fMLa2mjlactTbD_CCKB1tX (`get_ur_software_version`) | Geräteinformation | Softwareversion abrufen | ip:Roboter-IP |
+| fWXQKGQ6J5mas9K9mGPK3x (`get_safety_mode`) | Geräteinformation | Sicherheitsmodus abrufen | ip:Roboter-IP |
+| f81vKugz9xnncjirTC3B6A (`get_programs`) | Programmsteuerung | Programmliste abrufen | ip:Roboter-IP, username/password:SSH-Anmeldedaten |
+| ffaaQZeknwwTISLYdYqM0_ (`send_program_script`) | Programmsteuerung | Programmskript senden | ip:Roboter-IP, script:Skriptinhalt |
+| fsWlT3tCOn1ub-kUZCrq7E (`draw_circle`) | Bewegungssteuerung | Kreisbewegung | ip:Roboter-IP, center:TCP-Mittelpunktposition, r:Radius(Meter) |
+| f7y1QpjnA9s1bzfLeOkTnS (`draw_square`) | Bewegungssteuerung | Quadrat zeichnen | ip:Roboter-IP, origin:TCP-Startposition, border:Seitenlänge(Meter) |
+| fuN_LLSc22VKXWXwbwNARo (`draw_rectangle`) | Bewegungssteuerung | Rechteck zeichnen | ip:Roboter-IP, origin:TCP-Startposition, width/height:Breite/Höhe(Meter) |
 
 Hinweis: Alle Tools erfordern eine vorherige Roboterverbindung.
 

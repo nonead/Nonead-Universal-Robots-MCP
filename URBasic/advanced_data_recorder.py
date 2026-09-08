@@ -835,6 +835,11 @@ class AdvancedDataRecorder:
         # 记录最后采样时间（用于控制采样率）
         self.last_sampling_time = {}
         
+        # 会话管理（面向 MCP 的会话式记录接口）
+        self._sessions = {}            # {session_id: session_info}
+        self._active_sessions = set()  # 活跃会话ID集合
+        self._recorded_sessions = {}   # {session_id: session_info}
+        
         # 启动后台线程
         self.flush_thread = None
         if self.recording_config.flush_interval_seconds > 0:
@@ -867,19 +872,89 @@ class AdvancedDataRecorder:
             
             time.sleep(0.1)
     
-    def start_recording(self):
+    def start_recording(self, robot_id: Optional[str] = None,
+                        record_types: Optional[List[DataRecordType]] = None,
+                        duration: float = 0.0) -> str:
         """
-        开始记录
+        开始记录（会创建并登记一个记录会话）
+
+        Args:
+            robot_id: 机器人ID
+            record_types: 记录类型列表
+            duration: 记录持续时间（秒），0 表示持续记录直到 stop_recording
+
+        Returns:
+            str: 会话ID
         """
+        session_id = f"session_{time.time_ns()}"
+        self._sessions[session_id] = {
+            'session_id': session_id,
+            'robot_id': robot_id,
+            'record_types': record_types or [],
+            'duration': duration,
+            'status': 'active',
+            'start_time': time.time(),
+            'end_time': None,
+            'record_count': 0,
+        }
+        self._active_sessions.add(session_id)
         self.recording = True
-        logger.info("数据记录已开始")
-    
-    def stop_recording(self):
+        logger.info(f"已启动数据记录会话: {session_id}，机器人: {robot_id}，时长: {duration}s")
+        return session_id
+
+    def stop_recording(self, session_id: str) -> bool:
         """
         停止记录
+
+        Args:
+            session_id: 会话ID
+
+        Returns:
+            bool: 是否停止成功
         """
-        self.recording = False
-        logger.info("数据记录已停止")
+        if session_id not in self._sessions:
+            logger.warning(f"停止记录失败，会话 {session_id} 不存在")
+            return False
+        if session_id in self._active_sessions:
+            self._active_sessions.discard(session_id)
+        session = self._sessions[session_id]
+        session['status'] = 'completed'
+        session['end_time'] = time.time()
+        self._recorded_sessions[session_id] = session
+        if not self._active_sessions:
+            self.recording = False
+        logger.info(f"已停止数据记录会话: {session_id}")
+        return True
+
+    def get_active_sessions(self) -> List[str]:
+        """
+        获取所有活跃会话ID
+
+        Returns:
+            List[str]: 活跃会话ID列表
+        """
+        return list(self._active_sessions)
+
+    def get_recorded_sessions(self) -> List[str]:
+        """
+        获取所有已记录的会话ID
+
+        Returns:
+            List[str]: 已记录会话ID列表
+        """
+        return list(self._recorded_sessions.keys())
+
+    def get_session_info(self, session_id: str) -> Optional[Dict[str, Any]]:
+        """
+        获取会话信息
+
+        Args:
+            session_id: 会话ID
+
+        Returns:
+            Optional[Dict]: 会话信息，不存在则返回 None
+        """
+        return self._sessions.get(session_id)
     
     def toggle_recording(self) -> bool:
         """

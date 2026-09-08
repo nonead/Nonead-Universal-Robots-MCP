@@ -16,6 +16,40 @@ from scipy.interpolate import splprep, splev
 from scipy.optimize import minimize
 import time
 import logging
+from typing import Dict, List, Optional, Union, Tuple
+from dataclasses import dataclass
+
+@dataclass
+class TrajectoryPoint:
+    """轨迹点类，包含位置、速度、加速度等信息"""
+    pose: List[float]            # 位姿 [x, y, z, rx, ry, rz]
+    velocity: Optional[List[float]] = None  # 速度
+    acceleration: Optional[List[float]] = None  # 加速度
+    time: Optional[float] = None  # 时间戳
+    joint_positions: Optional[List[float]] = None  # 关节位置
+    joint_velocities: Optional[List[float]] = None  # 关节速度
+    joint_accelerations: Optional[List[float]] = None  # 关节加速度
+
+@dataclass
+class PathPoint:
+    """路径点类，包含位置和相关属性"""
+    position: List[float]         # 位置 [x, y, z]
+    orientation: Optional[List[float]] = None  # 姿态 [rx, ry, rz]
+    velocity: Optional[float] = None  # 速度
+    acceleration: Optional[float] = None  # 加速度
+    curvature: Optional[float] = None  # 曲率
+    is_waypoint: bool = False  # 是否为途经点
+
+@dataclass
+class TrajectoryConstraint:
+    """轨迹约束类，包含速度、加速度等约束条件"""
+    max_velocity: float = 0.5      # 最大线速度 (m/s)
+    max_acceleration: float = 0.2   # 最大线加速度 (m/s²)
+    max_jerk: float = 0.1          # 最大线加加速度 (m/s³)
+    max_joint_velocity: float = 1.0  # 最大关节速度 (rad/s)
+    max_joint_acceleration: float = 0.5  # 最大关节加速度 (rad/s²)
+    max_joint_jerk: float = 0.2    # 最大关节加加速度 (rad/s³)
+    safety_margin: float = 0.05    # 安全余量 (m)
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

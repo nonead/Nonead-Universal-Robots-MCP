@@ -9,6 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+.build_tmp/
 develop-eggs/
 dist/
 downloads/
@@ -102,3 +103,22 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.vscode/launch.json
+
+# Local logs
+logs/
+
+# IDE directories
+.vscode/
+.idea/
+
+# Packaging config
+.pypirc
+
+# Editor swap/backup files
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db

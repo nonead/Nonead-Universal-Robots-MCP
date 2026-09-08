@@ -133,39 +133,39 @@ nUR_MCP_SERVER - это промежуточное программное обе
 
 | ID инструмента | Категория | Описание | Ключевые параметры |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | Управление подключением | Подключение робота UR | ip:IP робота |
-| fcr4pIqoIXyxh3ko9FOsWU | Управление подключением | Отключение робота UR | ip:IP робота |
-| fNKAydKkxHwmGFgyrePBsN | Мониторинг состояния | Получение времени работы (секунды) | ip:IP робота |
-| fYTMsGvSRpUdWmURng7kGX | Операции с регистрами | Получение выхода регистра Int (0-23) | ip:IP робота, index:индекс регистра |
-| fvfqDMdDJer6kpbCzwFL1D | Операции с регистрами | Получение выхода регистра Double (0-23) | ip:IP робота, index:индекс регистра |
-| fCJ6sRw9m0ArdZ-MCaeNWK | Операции с регистрами | Получение выхода регистра Double (0-31) | ip:IP робота, index:индекс регистра |
-| f_ZXAIUv-eqHelwWxrzDHe | Информация об устройстве | Получение серийного номера | ip:IP робота |
-| fZ2ALt5kD50gV9AdEgBrRO | Информация об устройстве | Получение модели | ip:IP робота |
-| fEtHcw5RNF54X9RYIEU-1m | Управление движением | Получение координат TCP в реальном времени | ip:IP робота |
-| ftsb2AsiqiPqSBxHIwALOx | Управление движением | Получение углов суставов в реальном времени | ip:IP робота |
-| fXmkr4PLkHKF0wgQGEHzLt | Управление движением | Отправка команды положения суставов | ip:IP робота, q:углы суставов(радианы) |
-| fWdukQrgFZeK-DEcST4AwO | Управление движением | Отправка команды линейного движения TCP | ip:IP робота, pose:позиция TCP |
-| f2gbgju7QsymJa4wPgZQ0T | Управление движением | Линейное движение по оси X | ip:IP робота, distance:расстояние(метры) |
-| fS6rCxVp498s5edU7jCMB3 | Управление движением | Линейное движение по оси Y | ip:IP робота, distance:расстояние(метры) |
-| fJps7j-T3lwzXhp8p0_suy | Управление движением | Линейное движение по оси Z | ip:IP робота, distance:расстояние(метры) |
-| fTMj5413O5CzsORAyBYXj8 | Управление программой | Загрузка программы UR | ip:IP робота, program_name:название программы |
-| fqiYJ1c9fqCs5eYd-yKEeJ | Управление программой | Загрузка и выполнение программы UR | ip:IP робота, program_name:название программы |
-| fW6-wrPoqm2bE3bMgtLbLP | Управление программой | Остановка текущей программы | ip:IP робота |
-| fsEmm-VX3CCY_XvnCDms7f | Управление программой | Пауза текущей программы | ip:IP робота |
-| f83-fUQBd-YRSdIQDpuYmW | Мониторинг состояния | Получение текущего напряжения | ip:IP робота |
-| foMoD2L690vRdQxdW_gRNl | Мониторинг состояния | Получение текущего тока | ip:IP робота |
-| fDZBXqofuIb-7IjS6t2YJ2 | Мониторинг состояния | Получение напряжения суставов | ip:IP робота |
-| fgAa_kwSmXmvld6Alx39ij | Мониторинг состояния | Получение тока суставов | ip:IP робота |
-| furAKHVnYvORJ9R7N7vpbl | Мониторинг состояния | Получение температуры суставов | ip:IP робота |
-| fuNb7TgOgWNukjAVjusMN4 | Мониторинг состояния | Получение состояния работы | ip:IP робота |
-| fD12XJtqjgI46Oufwt928c | Мониторинг состояния | Получение состояния выполнения программы | ip:IP робота |
-| fMLa2mjlactTbD_CCKB1tX | Информация об устройстве | Получение версии ПО | ip:IP робота |
-| fWXQKGQ6J5mas9K9mGPK3x | Информация об устройстве | Получение режима безопасности | ip:IP робота |
-| f81vKugz9xnncjirTC3B6A | Управление программой | Получение списка программ | ip:IP робота, username/password:учетные данные SSH |
-| ffaaQZeknwwTISLYdYqM0_ | Управление программой | Отправка скрипта программы | ip:IP робота, script:содержимое скрипта |
-| fsWlT3tCOn1ub-kUZCrq7E | Управление движением | Круговое движение | ip:IP робота, center:позиция TCP центра, r:радиус(метры) |
-| f7y1QpjnA9s1bzfLeOkTnS | Управление движением | Рисование квадрата | ip:IP робота, origin:начальная позиция TCP, border:длина стороны(метры) |
-| fuN_LLSc22VKXWXwbwNARo | Управление движением | Рисование прямоугольника | ip:IP робота, origin:начальная позиция TCP, width/height:ширина/высота(метры) |
+| fkUCFg7YmxSflgfmJawHeo (`connect_ur`) | Управление подключением | Подключение робота UR | ip:IP робота |
+| fcr4pIqoIXyxh3ko9FOsWU (`disconnect_ur`) | Управление подключением | Отключение робота UR | ip:IP робота |
+| fNKAydKkxHwmGFgyrePBsN (`get_time`) | Мониторинг состояния | Получение времени работы (секунды) | ip:IP робота |
+| fYTMsGvSRpUdWmURng7kGX (`get_output_int_register`) | Операции с регистрами | Получение выхода регистра Int (0-23) | ip:IP робота, index:индекс регистра |
+| fvfqDMdDJer6kpbCzwFL1D (`get_output_double_register`) | Операции с регистрами | Получение выхода регистра Double (0-23) | ip:IP робота, index:индекс регистра |
+| fCJ6sRw9m0ArdZ-MCaeNWK (`get_output_bit_register`) | Операции с регистрами | Получение выхода регистра Double (0-31) | ip:IP робота, index:индекс регистра |
+| f_ZXAIUv-eqHelwWxrzDHe (`get_serial_number`) | Информация об устройстве | Получение серийного номера | ip:IP робота |
+| fZ2ALt5kD50gV9AdEgBrRO (`get_robot_model`) | Информация об устройстве | Получение модели | ip:IP робота |
+| fEtHcw5RNF54X9RYIEU-1m (`get_actual_tcp_pose`) | Управление движением | Получение координат TCP в реальном времени | ip:IP робота |
+| ftsb2AsiqiPqSBxHIwALOx (`get_actual_joint_pose`) | Управление движением | Получение углов суставов в реальном времени | ip:IP робота |
+| fXmkr4PLkHKF0wgQGEHzLt (`movej`) | Управление движением | Отправка команды положения суставов | ip:IP робота, q:углы суставов(радианы) |
+| fWdukQrgFZeK-DEcST4AwO (`movel`) | Управление движением | Отправка команды линейного движения TCP | ip:IP робота, pose:позиция TCP |
+| f2gbgju7QsymJa4wPgZQ0T (`movel_x`) | Управление движением | Линейное движение по оси X | ip:IP робота, distance:расстояние(метры) |
+| fS6rCxVp498s5edU7jCMB3 (`movel_y`) | Управление движением | Линейное движение по оси Y | ip:IP робота, distance:расстояние(метры) |
+| fJps7j-T3lwzXhp8p0_suy (`movel_z`) | Управление движением | Линейное движение по оси Z | ip:IP робота, distance:расстояние(метры) |
+| fTMj5413O5CzsORAyBYXj8 (`load_program`) | Управление программой | Загрузка программы UR | ip:IP робота, program_name:название программы |
+| fqiYJ1c9fqCs5eYd-yKEeJ (`load_and_run_program`) | Управление программой | Загрузка и выполнение программы UR | ip:IP робота, program_name:название программы |
+| fW6-wrPoqm2bE3bMgtLbLP (`stop_program`) | Управление программой | Остановка текущей программы | ip:IP робота |
+| fsEmm-VX3CCY_XvnCDms7f (`pause_program`) | Управление программой | Пауза текущей программы | ip:IP робота |
+| f83-fUQBd-YRSdIQDpuYmW (`get_actual_robot_voltage`) | Мониторинг состояния | Получение текущего напряжения | ip:IP робота |
+| foMoD2L690vRdQxdW_gRNl (`get_actual_robot_current`) | Мониторинг состояния | Получение текущего тока | ip:IP робота |
+| fDZBXqofuIb-7IjS6t2YJ2 (`get_actual_joint_voltage`) | Мониторинг состояния | Получение напряжения суставов | ip:IP робота |
+| fgAa_kwSmXmvld6Alx39ij (`get_actual_joint_current`) | Мониторинг состояния | Получение тока суставов | ip:IP робота |
+| furAKHVnYvORJ9R7N7vpbl (`get_joint_temperatures`) | Мониторинг состояния | Получение температуры суставов | ip:IP робота |
+| fuNb7TgOgWNukjAVjusMN4 (`get_robot_mode`) | Мониторинг состояния | Получение состояния работы | ip:IP робота |
+| fD12XJtqjgI46Oufwt928c (`get_program_state`) | Мониторинг состояния | Получение состояния выполнения программы | ip:IP робота |
+| fMLa2mjlactTbD_CCKB1tX (`get_ur_software_version`) | Информация об устройстве | Получение версии ПО | ip:IP робота |
+| fWXQKGQ6J5mas9K9mGPK3x (`get_safety_mode`) | Информация об устройстве | Получение режима безопасности | ip:IP робота |
+| f81vKugz9xnncjirTC3B6A (`get_programs`) | Управление программой | Получение списка программ | ip:IP робота, username/password:учетные данные SSH |
+| ffaaQZeknwwTISLYdYqM0_ (`send_program_script`) | Управление программой | Отправка скрипта программы | ip:IP робота, script:содержимое скрипта |
+| fsWlT3tCOn1ub-kUZCrq7E (`draw_circle`) | Управление движением | Круговое движение | ip:IP робота, center:позиция TCP центра, r:радиус(метры) |
+| f7y1QpjnA9s1bzfLeOkTnS (`draw_square`) | Управление движением | Рисование квадрата | ip:IP робота, origin:начальная позиция TCP, border:длина стороны(метры) |
+| fuN_LLSc22VKXWXwbwNARo (`draw_rectangle`) | Управление движением | Рисование прямоугольника | ip:IP робота, origin:начальная позиция TCP, width/height:ширина/высота(метры) |
 
 Примечание: Все инструменты требуют предварительного подключения к роботу.
 

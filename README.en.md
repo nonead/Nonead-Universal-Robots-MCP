@@ -133,39 +133,39 @@ Technical Specifications:
 
 | Tool ID | Function Category | Function Description | Key Parameters |
 |--------|----------|----------|----------|
-| fkUCFg7YmxSflgfmJawHeo | Connection Management | Connect to UR robot | ip:robot IP |
-| fcr4pIqoIXyxh3ko9FOsWU | Connection Management | Disconnect UR robot | ip:robot IP |
-| fNKAydKkxHwmGFgyrePBsN | Status Monitoring | Get power-on duration (seconds) | ip:robot IP |
-| fYTMsGvSRpUdWmURng7kGX | Register Operation | Get Int register output (0-23) | ip:robot IP, index:register index |
-| fvfqDMdDJer6kpbCzwFL1D | Register Operation | Get Double register output (0-23) | ip:robot IP, index:register index |
-| fCJ6sRw9m0ArdZ-MCaeNWK | Register Operation | Get Double register output (0-31) | ip:robot IP, index:register index |
-| f_ZXAIUv-eqHelwWxrzDHe | Device Information | Get serial number | ip:robot IP |
-| fZ2ALt5kD50gV9AdEgBrRO | Device Information | Get model | ip:robot IP |
-| fEtHcw5RNF54X9RYIEU-1m | Motion Control | Get real-time TCP coordinates | ip:robot IP |
-| ftsb2AsiqiPqSBxHIwALOx | Motion Control | Get real-time joint angles | ip:robot IP |
-| fXmkr4PLkHKF0wgQGEHzLt | Motion Control | Send joint pose command | ip:robot IP, q:joint angles(radians) |
-| fWdukQrgFZeK-DEcST4AwO | Motion Control | Send TCP linear movement command | ip:robot IP, pose:TCP position |
-| f2gbgju7QsymJa4wPgZQ0T | Motion Control | X-axis linear movement | ip:robot IP, distance:movement distance(meters) |
-| fS6rCxVp498s5edU7jCMB3 | Motion Control | Y-axis linear movement | ip:robot IP, distance:movement distance(meters) |
-| fJps7j-T3lwzXhp8p0_suy | Motion Control | Z-axis linear movement | ip:robot IP, distance:movement distance(meters) |
-| fTMj5413O5CzsORAyBYXj8 | Program Control | Load UR program | ip:robot IP, program_name:program name |
-| fqiYJ1c9fqCs5eYd-yKEeJ | Program Control | Load and execute UR program | ip:robot IP, program_name:program name |
-| fW6-wrPoqm2bE3bMgtLbLP | Program Control | Stop current program | ip:robot IP |
-| fsEmm-VX3CCY_XvnCDms7f | Program Control | Pause current program | ip:robot IP |
-| f83-fUQBd-YRSdIQDpuYmW | Status Monitoring | Get current voltage | ip:robot IP |
-| foMoD2L690vRdQxdW_gRNl | Status Monitoring | Get current current | ip:robot IP |
-| fDZBXqofuIb-7IjS6t2YJ2 | Status Monitoring | Get joint voltage | ip:robot IP |
-| fgAa_kwSmXmvld6Alx39ij | Status Monitoring | Get joint current | ip:robot IP |
-| furAKHVnYvORJ9R7N7vpbl | Status Monitoring | Get joint temperature | ip:robot IP |
-| fuNb7TgOgWNukjAVjusMN4 | Status Monitoring | Get operation status | ip:robot IP |
-| fD12XJtqjgI46Oufwt928c | Status Monitoring | Get program execution status | ip:robot IP |
-| fMLa2mjlactTbD_CCKB1tX | Device Information | Get software version | ip:robot IP |
-| fWXQKGQ6J5mas9K9mGPK3x | Device Information | Get safety mode | ip:robot IP |
-| f81vKugz9xnncjirTC3B6A | Program Control | Get program list | ip:robot IP, username/password:SSH credentials |
-| ffaaQZeknwwTISLYdYqM0_ | Program Control | Send program script | ip:robot IP, script:script content |
-| fsWlT3tCOn1ub-kUZCrq7E | Motion Control | Circular motion | ip:robot IP, center:TCP center position, r:radius(meters) |
-| f7y1QpjnA9s1bzfLeOkTnS | Motion Control | Draw square | ip:robot IP, origin:TCP start position, border:side length(meters) |
-| fuN_LLSc22VKXWXwbwNARo | Motion Control | Draw rectangle | ip:robot IP, origin:TCP start position, width/height:width/height(meters) |
+| fkUCFg7YmxSflgfmJawHeo (`connect_ur`) | Connection Management | Connect to UR robot | ip:robot IP |
+| fcr4pIqoIXyxh3ko9FOsWU (`disconnect_ur`) | Connection Management | Disconnect UR robot | ip:robot IP |
+| fNKAydKkxHwmGFgyrePBsN (`get_time`) | Status Monitoring | Get power-on duration (seconds) | ip:robot IP |
+| fYTMsGvSRpUdWmURng7kGX (`get_output_int_register`) | Register Operation | Get Int register output (0-23) | ip:robot IP, index:register index |
+| fvfqDMdDJer6kpbCzwFL1D (`get_output_double_register`) | Register Operation | Get Double register output (0-23) | ip:robot IP, index:register index |
+| fCJ6sRw9m0ArdZ-MCaeNWK (`get_output_bit_register`) | Register Operation | Get Double register output (0-31) | ip:robot IP, index:register index |
+| f_ZXAIUv-eqHelwWxrzDHe (`get_serial_number`) | Device Information | Get serial number | ip:robot IP |
+| fZ2ALt5kD50gV9AdEgBrRO (`get_robot_model`) | Device Information | Get model | ip:robot IP |
+| fEtHcw5RNF54X9RYIEU-1m (`get_actual_tcp_pose`) | Motion Control | Get real-time TCP coordinates | ip:robot IP |
+| ftsb2AsiqiPqSBxHIwALOx (`get_actual_joint_pose`) | Motion Control | Get real-time joint angles | ip:robot IP |
+| fXmkr4PLkHKF0wgQGEHzLt (`movej`) | Motion Control | Send joint pose command | ip:robot IP, q:joint angles(radians) |
+| fWdukQrgFZeK-DEcST4AwO (`movel`) | Motion Control | Send TCP linear movement command | ip:robot IP, pose:TCP position |
+| f2gbgju7QsymJa4wPgZQ0T (`movel_x`) | Motion Control | X-axis linear movement | ip:robot IP, distance:movement distance(meters) |
+| fS6rCxVp498s5edU7jCMB3 (`movel_y`) | Motion Control | Y-axis linear movement | ip:robot IP, distance:movement distance(meters) |
+| fJps7j-T3lwzXhp8p0_suy (`movel_z`) | Motion Control | Z-axis linear movement | ip:robot IP, distance:movement distance(meters) |
+| fTMj5413O5CzsORAyBYXj8 (`load_program`) | Program Control | Load UR program | ip:robot IP, program_name:program name |
+| fqiYJ1c9fqCs5eYd-yKEeJ (`load_and_run_program`) | Program Control | Load and execute UR program | ip:robot IP, program_name:program name |
+| fW6-wrPoqm2bE3bMgtLbLP (`stop_program`) | Program Control | Stop current program | ip:robot IP |
+| fsEmm-VX3CCY_XvnCDms7f (`pause_program`) | Program Control | Pause current program | ip:robot IP |
+| f83-fUQBd-YRSdIQDpuYmW (`get_actual_robot_voltage`) | Status Monitoring | Get current voltage | ip:robot IP |
+| foMoD2L690vRdQxdW_gRNl (`get_actual_robot_current`) | Status Monitoring | Get current current | ip:robot IP |
+| fDZBXqofuIb-7IjS6t2YJ2 (`get_actual_joint_voltage`) | Status Monitoring | Get joint voltage | ip:robot IP |
+| fgAa_kwSmXmvld6Alx39ij (`get_actual_joint_current`) | Status Monitoring | Get joint current | ip:robot IP |
+| furAKHVnYvORJ9R7N7vpbl (`get_joint_temperatures`) | Status Monitoring | Get joint temperature | ip:robot IP |
+| fuNb7TgOgWNukjAVjusMN4 (`get_robot_mode`) | Status Monitoring | Get operation status | ip:robot IP |
+| fD12XJtqjgI46Oufwt928c (`get_program_state`) | Status Monitoring | Get program execution status | ip:robot IP |
+| fMLa2mjlactTbD_CCKB1tX (`get_ur_software_version`) | Device Information | Get software version | ip:robot IP |
+| fWXQKGQ6J5mas9K9mGPK3x (`get_safety_mode`) | Device Information | Get safety mode | ip:robot IP |
+| f81vKugz9xnncjirTC3B6A (`get_programs`) | Program Control | Get program list | ip:robot IP, username/password:SSH credentials |
+| ffaaQZeknwwTISLYdYqM0_ (`send_program_script`) | Program Control | Send program script | ip:robot IP, script:script content |
+| fsWlT3tCOn1ub-kUZCrq7E (`draw_circle`) | Motion Control | Circular motion | ip:robot IP, center:TCP center position, r:radius(meters) |
+| f7y1QpjnA9s1bzfLeOkTnS (`draw_square`) | Motion Control | Draw square | ip:robot IP, origin:TCP start position, border:side length(meters) |
+| fuN_LLSc22VKXWXwbwNARo (`draw_rectangle`) | Motion Control | Draw rectangle | ip:robot IP, origin:TCP start position, width/height:width/height(meters) |
 
 Note: All tools require establishing robot connection first.
 
@@ -277,7 +277,7 @@ pip install -r requirements.txt
     "nUR_MCP_SERVER": {
       "command": "uvx",
       "args": [
-        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
         "nonead-universal-robots-mcp"
       ]
     }
@@ -292,7 +292,7 @@ pip install -r requirements.txt
     "nUR_MCP_SERVER": {
       "command": "uvx",
       "args": [
-        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
         "nonead-universal-robots-mcp"
       ]
     }
@@ -321,7 +321,7 @@ pip install -r requirements.txt
       ],
       "command": "uvx",
       "args": [
-        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
         "nonead-universal-robots-mcp"
       ],
       "installSource": "unknown"
@@ -346,7 +346,7 @@ pip install -r requirements.txt
       "tags": [],
       "command": "uvx",
       "args": [
-        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
         "nonead-universal-robots-mcp"
       ],
       "installSource": "unknown"
@@ -364,7 +364,7 @@ pip install -r requirements.txt
     "nUR_MCP_SERVER": {
       "command": "uvx",
       "args": [
-        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
         "nonead-universal-robots-mcp"
       ]
     }
@@ -379,7 +379,7 @@ pip install -r requirements.txt
     "nUR_MCP_SERVER": {
       "command": "uvx",
       "args": [
-        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.0-py3-none-any.whl",
+        "https://www.nonead.com/download/nonead_universal_robots_mcp-0.1.4-py3-none-any.whl",
         "nonead-universal-robots-mcp"
       ]
     }
