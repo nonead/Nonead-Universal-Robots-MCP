@@ -640,6 +640,123 @@ class AdvancedTrajectoryPlanner(TrajectoryPlanner):
         self.collision_avoidance_strategy = CollisionAvoidanceStrategy.AVOID_ALL
         self.joint_masses = [5.0, 5.0, 3.0, 2.0, 2.0, 1.0]  # 默认关节质量
     
+    def generate_bezier_curve(self, control_points: List[List[float]],
+                              num_points: int = 50) -> List[List[float]]:
+        """
+        生成贝塞尔曲线（保留全部维度，起点/终点等于控制点端点）
+
+        Args:
+            control_points: 控制点列表（每点为任意维度向量，通常为 6 维位姿）
+            num_points: 生成的采样点数
+
+        Returns:
+            List[List[float]]: 曲线上的采样点列表
+        """
+        if not control_points:
+            return []
+        cp = np.array(control_points, dtype=float)
+        if cp.ndim != 2 or cp.shape[0] < 2:
+            return [list(p) for p in control_points]
+        n = cp.shape[0] - 1
+        dim = cp.shape[1]
+        ts = np.linspace(0.0, 1.0, num_points)
+        result = np.zeros((num_points, dim))
+        for i, t in enumerate(ts):
+            for k in range(n + 1):
+                b = math.comb(n, k) * (t ** k) * ((1 - t) ** (n - k))
+                result[i] += b * cp[k]
+        return result.tolist()
+
+    def optimize_trajectory(self, waypoints: List[List[float]],
+                            optimization_type: str = "time",
+                            robot_model=None) -> List[List[float]]:
+        """
+        优化轨迹（时间/能耗/平滑度），始终保留起点与终点
+
+        Args:
+            waypoints: 路径点列表（每点为 6 维位姿）
+            optimization_type: 优化类型，可选 "time"、"energy"、"smoothness"
+            robot_model: 机器人模型（可选，用于运动学约束）
+
+        Returns:
+            List[List[float]]: 优化后的路径点列表
+        """
+        if not waypoints:
+            return []
+        pts = np.array(waypoints, dtype=float)
+        n = len(pts)
+        if n < 3:
+            return [list(p) for p in pts]
+        result = None
+        try:
+            if optimization_type == "energy":
+                result = EnergyOptimizer.optimize_trajectory_energy(
+                    waypoints, self.joint_masses, dt=0.1)
+            elif optimization_type == "time":
+                result = self._simplify_trajectory(pts)
+        except Exception as e:
+            logger.warning(f"轨迹优化({optimization_type})失败，回退到平滑: {str(e)}")
+            result = None
+        if result is None:
+            result = self._smooth_trajectory(pts)
+        result = np.array(result, dtype=float)
+        # 保证起点与终点保持不变
+        result[0] = pts[0]
+        result[-1] = pts[-1]
+        return result.tolist()
+
+    @staticmethod
+    def _smooth_trajectory(pts: np.ndarray) -> np.ndarray:
+        """移动平均平滑，保留端点"""
+        if len(pts) < 3:
+            return pts.copy()
+        smoothed = pts.copy()
+        win = max(1, int(len(pts) * 0.05))
+        for i in range(1, len(pts) - 1):
+            lo = max(0, i - win)
+            hi = min(len(pts), i + win + 1)
+            smoothed[i] = pts[lo:hi].mean(axis=0)
+        return smoothed
+
+    def _simplify_trajectory(self, pts: np.ndarray) -> np.ndarray:
+        """Ramer-Douglas-Peucker 简化，用于时间优化"""
+        if len(pts) < 3:
+            return pts.copy()
+        keep_idx = self._rdp_indexes(pts, epsilon=1e-3)
+        keep_idx = sorted(set([0, len(pts) - 1] + list(keep_idx)))
+        return pts[keep_idx]
+
+    def _rdp_indexes(self, pts: np.ndarray, epsilon: float) -> list:
+        keep = set()
+
+        def rec(lo, hi):
+            if hi <= lo + 1:
+                return
+            p0 = pts[lo]
+            p1 = pts[hi]
+            dmax, idx = 0.0, lo
+            for i in range(lo + 1, hi):
+                d = self._perp_dist(pts[i], p0, p1)
+                if d > dmax:
+                    dmax, idx = d, i
+            if dmax > epsilon:
+                keep.add(idx)
+                rec(lo, idx)
+                rec(idx, hi)
+
+        rec(0, len(pts) - 1)
+        return list(keep)
+
+    @staticmethod
+    def _perp_dist(p, a, b) -> float:
+        ab = b - a
+        norm = float(np.linalg.norm(ab))
+        if norm == 0:
+            return float(np.linalg.norm(p - a))
+        t = float(np.dot(p - a, ab) / norm)
+        t = max(0.0, min(1.0, t))
+        return float(np.linalg.norm(p - (a + t * ab)))
+
     def add_obstacle(self, obstacle: Obstacle) -> None:
         """
         添加障碍物

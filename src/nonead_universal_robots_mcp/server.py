@@ -478,8 +478,8 @@ def get_actual_joint_current(ip: str):
     try:
         if '连接失败' in link_check(ip):
             return return_msg(f"与机器人的连接已断开。")
-        logger.info(f"{robotModle_list[ip].ActualJointVoltage()}（安培）")
-        return return_msg(f"{robotModle_list[ip].ActualJointVoltage()}（安培）")
+        logger.info(f"{robotModle_list[ip].ActualJointCurrent()}（安培）")
+        return return_msg(f"{robotModle_list[ip].ActualJointCurrent()}（安培）")
     except Exception as e:
         logger.error(f"机器人各关节的电流获取失败: {str(e)}")
         return return_msg(f"机器人各关节的电流获取失败: {str(e)}")

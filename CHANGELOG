@@ -1,3 +1,16 @@
+## 0.1.5 - 未发布
+
+- 修复发布版 console 入口路径：`nonead_universal_robots_mcp.nonead_universal_robots_mcp.server:main` → `nonead_universal_robots_mcp.server:main`。
+- 新增 `RobotModel.ActualJointCurrent()`，并修正 `get_actual_joint_current` 调用；同时修正 `ActualJointVoltage()` 读取真实的每关节电压 `actual_joint_voltage`。
+- 统一许可元数据：`pyproject.toml` classifier 与 `URBasic.__license__` 对齐为 AGPL-3.0。
+- 补齐“高级功能”API，解决与 MCP 工具的断连：
+  - 多机器人协调器新增 `register_robot` / `create_collaboration_task` / `execute_task`，基类新增 `set_collaboration_mode` / `get_collaboration_mode` / `get_registered_robots`，并新增 `CollaborationMode.SYNCHRONOUS` 别名。
+  - 高级轨迹规划器新增 `generate_bezier_curve` / `optimize_trajectory`。
+  - 高级数据记录器改为会话式接口（`start_recording(robot_id, record_types, duration)` / `stop_recording(session_id)` / `get_active_sessions` / `get_recorded_sessions`）。
+- 修复高级数据分析器中的一个 pandas Index 真值判断错误。
+- 修复 `RobotAgent.connect()` 的错误签名与未定义 `robot_ext` 引用。
+- 修复并跑通扩展功能测试套件（`tests/test_extended_features.py`）。
+
 ## 0.1.4 - 2025-12-23
 
 - 升级包版本到 `0.1.4`。

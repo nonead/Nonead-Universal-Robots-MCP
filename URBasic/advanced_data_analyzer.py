@@ -271,7 +271,7 @@ class StatisticalAnalyzer(DataAnalyzer):
         if columns:
             numeric_cols = [col for col in columns if col in numeric_cols]
         
-        if not numeric_cols:
+        if len(numeric_cols) == 0:
             return {'error': '没有找到数值列'}
         
         results = {}

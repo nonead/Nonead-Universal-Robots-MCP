@@ -2,7 +2,7 @@ from __future__ import division
 
 __author__ = "Anthony Zhuang"
 __copyright__ = "Copyright 2009-2025"
-__license__ = "MIT License"
+__license__ = "AGPL-3.0"
 
 from URBasic.connectionState import ConnectionState
 from URBasic.dashboard import DashBoard

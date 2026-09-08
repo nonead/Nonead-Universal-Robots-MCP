@@ -21,6 +21,8 @@ import numpy as np
 
 # 导入必要的URBasic模块
 from URBasic.robotConnector import RobotConnector
+from URBasic.robotModel import RobotModel
+from URBasic.urScriptExt import UrScriptExt
 from URBasic.error_handling import RobotError, ErrorCategory, ErrorHandler
 
 # 设置日志
@@ -51,6 +53,7 @@ class CollaborationMode(Enum):
     SEQUENTIAL = "sequential"  # 顺序执行
     PARALLEL = "parallel"      # 并行执行
     SYNCHRONIZED = "synchronized"  # 同步执行
+    SYNCHRONOUS = "synchronized"   # 同步执行（SYNCHRONIZED 的别名）
     HIERARCHICAL = "hierarchical"  # 分层执行
 
 
@@ -107,12 +110,11 @@ class RobotAgent:
                     logger.warning(f"机器人 {self.robot_name} 已经连接")
                     return True
                 
-                self.connector = RobotConnector(
-                    robot_ip=self.robot_ip,
-                    robot_name=self.robot_name,
-                    tcp_port=port
-                )
-                self.robot = robot_ext.RobotExt(self.connector)
+                # 与 MCP 服务端保持一致：使用 UrScriptExt 建立与机器人的连接
+                robot_model = RobotModel()
+                self.robot = UrScriptExt(host=self.robot_ip, robotModel=robot_model)
+                self.connector = self.robot.robotConnector
+                self.robot_model = robot_model
                 self.connected = True
                 logger.info(f"成功连接到机器人 {self.robot_name} ({self.robot_ip})")
                 
@@ -378,6 +380,47 @@ class MultiRobotCoordinator:
         self._lock = threading.RLock()  # 线程锁
         self._task_queue = []  # 任务队列
         self._error_handler = ErrorHandler()
+    
+    def set_collaboration_mode(self, mode: "CollaborationMode") -> bool:
+        """
+        设置协作模式
+        
+        Args:
+            mode: 协作模式
+            
+        Returns:
+            bool: 设置是否成功
+        """
+        try:
+            if not isinstance(mode, CollaborationMode):
+                logger.warning(f"无效的协作模式: {mode}")
+                return False
+            with self._lock:
+                self.collaboration_mode = mode
+                logger.info(f"协作模式已设置为: {mode.value}")
+            return True
+        except Exception as e:
+            logger.error(f"设置协作模式失败: {str(e)}")
+            return False
+    
+    def get_collaboration_mode(self) -> "CollaborationMode":
+        """
+        获取当前协作模式
+        
+        Returns:
+            CollaborationMode: 当前协作模式
+        """
+        return self.collaboration_mode
+    
+    def get_registered_robots(self) -> List[str]:
+        """
+        获取所有已注册的机器人名称列表
+        
+        Returns:
+            List[str]: 机器人名称列表
+        """
+        with self._lock:
+            return list(self.robots.keys())
     
     def add_robot(self, robot_name: str, robot_ip: str, role: RobotRole = RobotRole.WORKER) -> bool:
         """

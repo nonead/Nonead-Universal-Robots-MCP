@@ -7,7 +7,7 @@ requires-python = ">=3.12,<3.13"
 
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU Affero General Public License v3 (AGPL-3.0)",
     "Operating System :: OS Independent",
 ]
 
@@ -32,14 +32,16 @@ dependencies = [
 ]
 
 [project.scripts]
-nonead-universal-robots-mcp = "nonead_universal_robots_mcp.nonead_universal_robots_mcp.server:main"
+nonead-universal-robots-mcp = "nonead_universal_robots_mcp.server:main"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-package-dir = {"nonead_universal_robots_mcp" = "src","URBasic"="URBasic"}
+[tool.setuptools.packages.find]
+where = ["src", "."]
+include = ["nonead_universal_robots_mcp*", "URBasic*"]
+exclude = ["tests*", "test_*", "*.egg-info*"]
 
 [tool.setuptools.package-data]
 URBasic = ["rtdeConfigurationDefault.xml"]

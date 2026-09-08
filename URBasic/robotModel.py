@@ -263,7 +263,11 @@ class RobotModel(object):
         return self.dataDir['actual_robot_current']
 
     def ActualJointVoltage(self):
-        # raise NotImplementedError('Function Not yet implemented')
+        # 各关节实际电压 (V)
+        return self.dataDir['actual_joint_voltage']
+
+    def ActualJointCurrent(self):
+        # 各关节实际电流 (A)
         return self.dataDir['actual_current']
 
     def RunTimeState(self):
